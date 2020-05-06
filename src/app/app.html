@@ -5,12 +5,34 @@
     </ion-toolbar>
   </ion-header>
 
+
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+<br>
+    <ion-list id="menuPaciente">
+      <ion-item (click)="menuPaciente()">Paciente</ion-item>
+  <ion-item-group menuPaciente [class.menuPaciente]="showPaciente">
+    <ion-item submenu-item >Paciente1</ion-item>
+    <ion-item submenu-item >Paciente2</ion-item>
+  </ion-item-group>
     </ion-list>
+
+
+    <ion-list id="sidenav1">
+      <ion-item (click)="menuItemHandler1()">Farmacia</ion-item>
+  <ion-item-group menufarmacia [class.visible1]="showSubmenu1">
+    <ion-item submenu-item >Farmacia2</ion-item>
+    <ion-item submenu-item >Farmacia3</ion-item>
+  </ion-item-group>
+    </ion-list>
+
+<ion-list id="sidenav">
+  <ion-item (click)="menuItemHandler()">Configuração</ion-item>
+  <ion-item-group menu-configuracao [class.visible]="showSubmenu">
+    <ion-item submenu-item (click)="pais()">Configurar Pais</ion-item>
+    <ion-item submenu-item (click)="estado()">Configurar Cidades</ion-item>
+  </ion-item-group>
+    </ion-list>
+
   </ion-content>
 
 </ion-menu>
