@@ -61,4 +61,8 @@ export class MyApp {
   estado(){
      this.nav.setRoot('EstadoPage');
   }
+
+  /*
+  * Desenvolvido pelo zanana
+  */
 }
