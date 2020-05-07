@@ -56,9 +56,9 @@ export class MyApp {
   }
 
   pais(){
-    this.nav.push('PaisPage');
+    this.nav.setRoot('PaisPage');
   }
   estado(){
-     this.nav.push('EstadoPage');
+     this.nav.setRoot('EstadoPage');
   }
 }

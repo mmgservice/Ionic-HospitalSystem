@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PaisService} from '../../services/domain/pais.service';
+import { PaisDTO } from '../../modules/pais.dto';
 
 /**
  * Generated class for the PaisPage page.
@@ -15,11 +17,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PaisPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  items: PaisDTO[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+              public paisservice: PaisService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PaisPage');
-  }
+      this.paisservice.findAll()
+      .subscribe(response => {
+        this.items = response;
+      },
+      error => {
+        console.log(error);
+      });
+}
 
 }
