@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="secondary">
+   <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+   </button>
+    <ion-title>Cadastrar Médico</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <form [formGroup]="formGroup" (ngSubmit)="inserirMedico()">
+      <ion-item>
+        <ion-label stacked>Nome*</ion-label>
+        <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>CRM*</ion-label>
+        <ion-input formControlName="crm" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label multiple="true" >Expecialidade*</ion-label> 
+        <ion-select formControlName = "expmedicoId">
+            <ion-option *ngFor="let expmedico of expmedicos" [value]="expmedico.id">{{expmedico.expecialidade}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <button class = "bt" ion-button block style="width: 200px;" type="submit" [disabled]="formGroup.invalid">Salvar Cadastro</button>
+  </form>
+</ion-content>

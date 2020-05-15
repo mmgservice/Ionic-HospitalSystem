@@ -62,7 +62,19 @@ export class MyApp {
      this.nav.setRoot('EstadoPage');
   }
 
-  /*
-  * Desenvolvido pelo zanana
-  */
+  alergia(){
+    this.nav.setRoot("AlergiaPage")
+  }
+
+  expecialidademedico(){
+    this.nav.setRoot("ExpecialidadeMedicoPage")
+  }
+
+  usuario(){
+    this.nav.setRoot("UsuarioPage")
+  }
+
+  medico(){
+    this.nav.setRoot("MedicoPage")
+  }
 }

@@ -5,8 +5,6 @@ import { EstadoDTO } from "../../modules/estado.dto";
 import { API_CONFIG } from "../../config/api.config";
 
 @Injectable()
-
-
 export class EstadoService{
     constructor(public http: HttpClient) {
     }

@@ -6,6 +6,10 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PaisService } from '../services/domain/pais.service';
+import { AlergiaService } from '../services/domain/alergia.service';
+import { ExpecialidadeMedicaService } from '../services/domain/expecialidade-medica.service';
+import { UsuarioService } from '../services/usuario.service';
+import { MedicoService } from '../services/domain/medico.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { PaisService } from '../services/domain/pais.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PaisService
+    PaisService,
+    AlergiaService,
+    ExpecialidadeMedicaService,
+    UsuarioService,
+    MedicoService,
   ]
 })
 export class AppModule {}
