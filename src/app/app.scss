@@ -11,6 +11,13 @@
     }
   }
 }
+#sidenav_2 {
+  ion-item[submenu-item] {
+    padding-left: 30px; // maybe margin-left would work better to move the border as well
+    color: black;
+  }
+  
+}
 #menuPaciente {
   ion-item-group[menuPaciente] {
     overflow: hidden;

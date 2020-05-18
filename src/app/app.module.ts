@@ -5,11 +5,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PaisService } from '../services/domain/pais.service';
 import { AlergiaService } from '../services/domain/alergia.service';
-import { ExpecialidadeMedicaService } from '../services/domain/expecialidade-medica.service';
 import { UsuarioService } from '../services/usuario.service';
-import { MedicoService } from '../services/domain/medico.service';
+import { EstadoService } from '../services/domain/estado.service';
+import { CidadeService } from '../services/domain/cidade.service';
+import { QuartoService } from '../services/domain/quarto.service';
+import { LeitoService } from '../services/domain/leito.service';
+import { ExpecialideMedicoService } from '../services/domain/expmedico.service';
+import { MedicoDadosService } from '../services/domain/medicodados.service';
+
 
 @NgModule({
   declarations: [
@@ -28,11 +32,14 @@ import { MedicoService } from '../services/domain/medico.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PaisService,
     AlergiaService,
-    ExpecialidadeMedicaService,
+    ExpecialideMedicoService,
     UsuarioService,
-    MedicoService,
+    MedicoDadosService,
+    EstadoService,
+    CidadeService,
+    QuartoService,
+    LeitoService
   ]
 })
 export class AppModule {}

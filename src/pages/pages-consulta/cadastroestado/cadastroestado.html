@@ -1,0 +1,31 @@
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+   </button>
+    <ion-title>Cadastrado do Estado</ion-title>
+  </ion-navbar>
+</ion-header>
+<br>
+<ion-content padding>
+  <ion-searchbar>Buscar Estado</ion-searchbar>
+  <ion-card *ngFor="let item of items" >
+    
+    <ion-card-content>
+      <ion-icon name="ios-trash" item-end color="danger" (click)=" deletarEstado(id)"></ion-icon>
+      <ion-card-content>
+      <ion-card-title>
+        <h2> {{item.nome}}</h2>
+        </ion-card-title>
+      <p>
+       <br><br>
+      </p>
+    </ion-card-content >
+    <button ion-button block color="secondary" type="submit">Alterar Estado</button>
+    </ion-card-content>
+    <br>
+  </ion-card>
+
+
+</ion-content>

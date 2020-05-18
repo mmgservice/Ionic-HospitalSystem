@@ -4,17 +4,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu" ></ion-icon>
    </button>
-    <ion-title>Cadastrar Estado</ion-title>
+    <ion-title>Cadastrar Expecialidade</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding> 
-  <form  [formGroup]="formGroup" (ngSubmit)="inserirEstado()">
+  <form  [formGroup]="formGroup" (ngSubmit)="inserirExp()">
     <ion-item>
-      <ion-label stacked>Nome do Estado*</ion-label>
-      <ion-input formControlName="nome" type="text"></ion-input>
+      <ion-label stacked>Expecialidade Medica*</ion-label>
+      <ion-input formControlName="expecialidade" type="text"></ion-input>
     </ion-item>
     <button ion-button block  color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Cadastro</button>
-    <button ion-button block  color="danger" (click)="voltarTela()">Voltar</button>
   </form>
 </ion-content>

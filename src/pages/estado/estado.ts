@@ -1,25 +1,57 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EstadoDTO } from '../../modules/estado.dto';
+import { EstadoService } from '../../services/domain/estado.service';
 
-/**
- * Generated class for the EstadoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
   selector: 'page-estado',
-  templateUrl: 'estado.html',
+  templateUrl: 'estado.html'
 })
 export class EstadoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+   formGroup : FormGroup;
+   items: EstadoDTO[]
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public formBuilider: FormBuilder,
+              public alertControl: AlertController,
+              public estadoService: EstadoService
+              ) {
+
+             this.formGroup = this.formBuilider.group({
+                nome:["",Validators.required]
+             })   
+
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EstadoPage');
+  
   }
 
+  inserirEstado(){
+    this.estadoService.insert(this.formGroup.value).subscribe(response =>{
+      this.insertOk();
+    },
+    error => {}
+    )
+  }
+  insertOk(){
+    let alert = this.alertControl.create({
+      title: "Cadastrado",
+      message: "Cadastrado efetuado com sucesso!",
+      buttons:[{
+         text: "OK"
+      }]
+    })
+    alert.present();
+  }
+  voltarTela(){
+    this.navCtrl.setRoot('TelaInicialPage');
+  }
 }

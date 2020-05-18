@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PaisPage } from '../pages/pais/pais';
 
 
 @Component({
@@ -16,7 +15,12 @@ export class MyApp {
   showSubmenu: boolean = false;
   showSubmenu1: boolean = false;
   showPaciente: boolean = false;
- 
+  showEstado: boolean = false;
+  showCidade: boolean = false;
+  showQuarto: boolean = false;
+  showLeito: boolean = false;
+  showMedico: boolean = false;
+
   
   pages: Array<{title: string, component: string}>;
   
@@ -54,27 +58,44 @@ export class MyApp {
   menuPaciente(): void{
       this.showPaciente = ! this.showPaciente;
   }
-
-  pais(){
-    this.nav.setRoot('PaisPage');
+  menuEstado(): void{
+      this.showEstado = ! this.showEstado;
   }
+  menuQuarto(): void{
+      this.showQuarto = ! this.showQuarto;
+  }
+
+  menuLeito(): void{
+      this.showLeito = ! this.showLeito;
+  }
+
+  quarto(){
+    this.nav.setRoot('QuartoPage');
+  }
+
   estado(){
      this.nav.setRoot('EstadoPage');
   }
+  leito(){
+    this.nav.setRoot('LeitoPage');
+  }
 
   alergia(){
-    this.nav.setRoot("AlergiaPage")
+    this.nav.setRoot("AlergiaPage");
   }
-
-  expecialidademedico(){
-    this.nav.setRoot("ExpecialidadeMedicoPage")
+  cidade(){
+    this.nav.setRoot('CidadePage');
   }
-
+  expmedico(){
+    this.nav.setRoot('ExpmedicoPage')
+  }
   usuario(){
-    this.nav.setRoot("UsuarioPage")
+    this.nav.setRoot("UsuarioPage");
   }
-
+  cadastroEstado(){
+    this.nav.setRoot("CadastroestadoPage");
+  }
   medico(){
-    this.nav.setRoot("MedicoPage")
+    this.nav.setRoot("MedicodadosPage");
   }
 }

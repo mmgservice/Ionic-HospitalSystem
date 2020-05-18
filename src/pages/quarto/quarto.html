@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="secondary">
+   <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+   </button>
+    <ion-title>Cadastrar Quarto</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <form [formGroup]="formGroup" (ngSubmit)="inserirQuarto()">
+      <ion-item>
+        <ion-label stacked>Nome*</ion-label>
+        <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <button class = "bt" ion-button block style="width: 200px;" type="submit" [disabled]="formGroup.invalid">Salvar Cadastro</button>
+  </form>
+</ion-content>

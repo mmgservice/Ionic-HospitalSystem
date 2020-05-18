@@ -21,5 +21,6 @@ export class AlergiaService{
               responseType: "text"
           }
         );
+  
     }
 }
