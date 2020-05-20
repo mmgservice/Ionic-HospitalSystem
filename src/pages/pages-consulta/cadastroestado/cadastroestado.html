@@ -13,7 +13,7 @@
   <ion-card *ngFor="let item of items" >
     
     <ion-card-content>
-      <ion-icon name="ios-trash" item-end color="danger" (click)=" deletarEstado(id)"></ion-icon>
+      <ion-icon name="ios-trash" item-end color="danger" (click)=" deletarEstado(item.id)"></ion-icon>
       <ion-card-content>
       <ion-card-title>
         <h2> {{item.nome}}</h2>
@@ -22,7 +22,7 @@
        <br><br>
       </p>
     </ion-card-content >
-    <button ion-button block color="secondary" type="submit">Alterar Estado</button>
+    <button ion-button block color="secondary"  (click)="carregarestado()"type="submit">Alterar Estado</button>
     </ion-card-content>
     <br>
   </ion-card>

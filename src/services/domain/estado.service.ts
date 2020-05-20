@@ -19,15 +19,16 @@ export class EstadoService{
         }
       )
     }
+
     findAll() : Observable<EstadoDTO[]>  {
         return this.http.get<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados`);
     }
-    deletar(id: EstadoDTO) : Observable<EstadoDTO[]>  {
+    deletar(id) : Observable<EstadoDTO[]>  {
         return this.http.delete<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados/${id}`);
     }
     findById(estado_id : string) : Observable<EstadoDTO[]>  {
         return this.http.get<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados/${estado_id}`);
     }
-    
+   
 }
 

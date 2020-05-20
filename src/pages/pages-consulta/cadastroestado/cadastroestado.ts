@@ -40,30 +40,27 @@ export class CadastroestadoPage {
   }
 
   ionViewDidLoad() {
-      this.estadoservice.findAll()
-      .subscribe(response =>{
-        this.items = response;
-      },
-      error => {
-        console.log(error);
-      });
+     this.carregarEstado();
   }
-  estado(){
-    this.navCtrl.setRoot('EstadoPage');
+  carregarestado(){
+    this.navCtrl.setRoot('EditarestadoPage');
   }
-
-
-  deletarEstado(id: string){
-    let estado_id = this.formGroup.value.id;
-    this.estadoservice.deletar(estado_id)
-     .subscribe(response =>{
-    this.items = response;
-    this.formGroup.controls.id.setValue(null);
-    this.deletarOk();
-    },error => {
-    console.log(error);
+  carregarEstado(){
+    this.estadoservice.findAll()
+    .subscribe(response =>{
+      this.items = response;
+    },
+    error => {
+      console.log(error);
     });
+  }
+ 
 
+  deletarEstado(id){
+      this.estadoservice.deletar(id).subscribe(response =>{
+        this.deletarOk();
+        this.carregarEstado();
+      })
   }
 
   deletarOk(){

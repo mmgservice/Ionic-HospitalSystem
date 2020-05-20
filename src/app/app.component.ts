@@ -19,7 +19,9 @@ export class MyApp {
   showCidade: boolean = false;
   showQuarto: boolean = false;
   showLeito: boolean = false;
-  showMedico: boolean = false;
+  showMedicoEnfermagem: boolean = false;
+  showExpecialidadeEnf: boolean = false;
+  showEnfermagem: boolean = false;
 
   
   pages: Array<{title: string, component: string}>;
@@ -69,6 +71,14 @@ export class MyApp {
       this.showLeito = ! this.showLeito;
   }
 
+  menuEnf(): void{
+    this.showEnfermagem = ! this.showEnfermagem;
+  }
+  menuExpEnf():void{
+    this.showExpecialidadeEnf = ! this.showExpecialidadeEnf;
+  }
+
+/*----------------------MENU------CADASTRAR-------------------*/
   quarto(){
     this.nav.setRoot('QuartoPage');
   }
@@ -92,10 +102,27 @@ export class MyApp {
   usuario(){
     this.nav.setRoot("UsuarioPage");
   }
-  cadastroEstado(){
-    this.nav.setRoot("CadastroestadoPage");
-  }
+ 
   medico(){
     this.nav.setRoot("MedicodadosPage");
   }
+  enfermagem(){
+    this.nav.setRoot("EnfermagemdadosPage");
+  }
+  expecialidadeEnf(){
+    this.nav.setRoot('ExpenfermagemPage');
+  }
+
+/*----------------------MENU------CONSULTAR-------------------*/
+  cadastroEstado(){
+    this.nav.setRoot("CadastroestadoPage");
+  }
+
+  /*----------------------MENU------EDITAR-------------------*/
+
+  editarEstado(){
+    this.nav.setRoot("EditarestadoPage");
+  }
+
+
 }

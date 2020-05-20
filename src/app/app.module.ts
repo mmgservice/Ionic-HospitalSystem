@@ -13,6 +13,8 @@ import { QuartoService } from '../services/domain/quarto.service';
 import { LeitoService } from '../services/domain/leito.service';
 import { ExpecialideMedicoService } from '../services/domain/expmedico.service';
 import { MedicoDadosService } from '../services/domain/medicodados.service';
+import { ExpecialidadeEnfermagemService } from '../services/domain/expenfermagem';
+import { EnfermagemDadosService } from '../services/domain/enfermagemdados.service';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { MedicoDadosService } from '../services/domain/medicodados.service';
     EstadoService,
     CidadeService,
     QuartoService,
-    LeitoService
+    LeitoService,
+    ExpecialidadeEnfermagemService,
+    EnfermagemDadosService
   ]
 })
 export class AppModule {}
