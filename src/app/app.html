@@ -28,6 +28,8 @@
 <ion-list id="sidenav">
   <ion-item (click)="menuItemHandler()">Configuração</ion-item>
   <ion-item-group menu-configuracao [class.visible]="showSubmenu">
+    <ion-item submenu-item (click)="categoriaExame()">Cadastrar Categoria</ion-item>
+    <ion-item submenu-item (click)="nomeexame()">Cadastrar Nome do Exame</ion-item>
     <ion-item submenu-item (click)="cadastroEstado()">Cadastro do Estado</ion-item>
     <ion-item submenu-item (click)="estado()">Cadastrar Estado</ion-item>
     <ion-item submenu-item (click)="editarEstado()">Editar Estado</ion-item>

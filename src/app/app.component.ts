@@ -112,6 +112,12 @@ export class MyApp {
   expecialidadeEnf(){
     this.nav.setRoot('ExpenfermagemPage');
   }
+  categoriaExame(){
+    this.nav.setRoot('CategoriaexamePage');
+  }
+  nomeexame(){
+    this.nav.setRoot('NomeexamePage');
+  }
 
 /*----------------------MENU------CONSULTAR-------------------*/
   cadastroEstado(){
@@ -123,6 +129,7 @@ export class MyApp {
   editarEstado(){
     this.nav.setRoot("EditarestadoPage");
   }
+   
 
 
 }
