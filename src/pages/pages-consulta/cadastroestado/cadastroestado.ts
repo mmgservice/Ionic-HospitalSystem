@@ -21,6 +21,7 @@ export class CadastroestadoPage {
 
   items: EstadoDTO[];
   formGroup : FormGroup;
+  estadoItem: EstadoDTO[]
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -34,9 +35,7 @@ export class CadastroestadoPage {
                 this.formGroup = this.formBuilider.group({
                    id:["",Validators.required],
                    nome:["",Validators.required]
-                })   
-   
-              
+                })              
   }
 
   ionViewDidLoad() {
@@ -62,6 +61,8 @@ export class CadastroestadoPage {
         this.carregarEstado();
       })
   }
+
+
 
   deletarOk(){
     let alert = this.alertControl.create({

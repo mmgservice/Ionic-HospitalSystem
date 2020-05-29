@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { EstadoDTO } from "../../modules/estado.dto";
 import { API_CONFIG } from "../../config/api.config";
 import { Observable } from "rxjs";
+import { retry } from "rxjs/operator/retry";
 
 
 @Injectable()
@@ -29,6 +30,8 @@ export class EstadoService{
     findById(estado_id : string) : Observable<EstadoDTO[]>  {
         return this.http.get<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados/${estado_id}`);
     }
-   
+    update(id) : Observable<EstadoDTO[]>  {
+        return this.http.put<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados/${id}`,null);
+    }
 }
 

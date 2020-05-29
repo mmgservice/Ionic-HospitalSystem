@@ -37,6 +37,7 @@ export class EstadoPage {
   inserirEstado(){
     this.estadoService.insert(this.formGroup.value).subscribe(response =>{
       this.insertOk();
+      this.navCtrl.setRoot('CadastroestadoPage')
     },
     error => {}
     )
@@ -52,6 +53,16 @@ export class EstadoPage {
     alert.present();
   }
   voltarTela(){
-    this.navCtrl.setRoot('TelaInicialPage');
+    this.navCtrl.setRoot('CadastroestadoPage');
   }
+
+
+  updateEstado(){
+    let estado_id = this.formGroup.value.estadoId;
+    this.estadoService.findById(estado_id)
+    .subscribe(response => {
+        this.items = response;
+    }) 
+}
+ 
 }
