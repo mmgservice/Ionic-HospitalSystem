@@ -1,9 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { EstadoDTO } from "../../modules/estado.dto";
-import { API_CONFIG } from "../../config/api.config";
-import { Observable } from "rxjs";
-import { retry } from "rxjs/operator/retry";
+import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+import {EstadoDTO} from "../../modules/estado.dto";
+import {API_CONFIG} from "../../config/api.config";
+import {Observable} from "rxjs";
 
 
 @Injectable()
@@ -30,8 +29,13 @@ export class EstadoService{
     findById(estado_id : string) : Observable<EstadoDTO[]>  {
         return this.http.get<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados/${estado_id}`);
     }
-    update(id) : Observable<EstadoDTO[]>  {
-        return this.http.put<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados/${id}`,null);
+
+    findByAll() : Observable<EstadoDTO[]>  {
+        return this.http.get<EstadoDTO[]>(`${API_CONFIG.baseUrl}/estados/`);
+    }
+
+    update(estado: EstadoDTO) {
+        return this.http.put(`${API_CONFIG.baseUrl}/estados/${estado.id}`, estado);
     }
 }
 

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="secondary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title text-center>Estados</ion-title>
+    <ion-buttons end>
+      <!-- Novo estado -->
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="list()"></ion-refresher>
+
+  <!-- Lista de estados -->
+  <ion-list *ngIf="items.length">
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item.nome }}
+    </button>
+  </ion-list>
+
+  <!-- Nenhum estado na lista -->
+  <ion-list *ngIf="!items.length">
+    <ion-item text-center>
+      <span>Nenhum estado cadastrado</span>
+    </ion-item>
+  </ion-list>
+</ion-content>
