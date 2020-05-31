@@ -92,5 +92,19 @@ export class EstadoListPage implements OnInit {
       this.refresher.complete();
     }
   }
+  deletar(id){
+    this.estadoService.deletar(id).subscribe(response => {
+      this.items = response;
+      this.list();
+      let alert = this.alertControl.create({
+        title: "Sucesso",
+        message: "Estado removido com sucesso!",
+        buttons: [{
+          text: "OK"
+        }]
+      });
+      alert.present();
+    })
+  }
 
 }

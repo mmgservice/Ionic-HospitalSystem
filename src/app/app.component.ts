@@ -121,15 +121,8 @@ export class MyApp {
 
 /*----------------------MENU------CONSULTAR-------------------*/
   cadastroEstado(){
-    this.nav.setRoot("CadastroestadoPage");
+    this.nav.setRoot("EstadoListPage");
   }
-
-  /*----------------------MENU------EDITAR-------------------*/
-
-  editarEstado(){
-    this.nav.setRoot("EditarestadoPage");
-  }
-   
 
 
 }

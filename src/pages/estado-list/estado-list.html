@@ -16,13 +16,18 @@
 <ion-content padding>
   <ion-refresher (ionRefresh)="list()"></ion-refresher>
 
-  <!-- Lista de estados -->
-  <ion-list *ngIf="items.length">
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{ item.nome }}
-    </button>
-  </ion-list>
-
+  <ion-card *ngFor="let item of items" >
+    <ion-card-content id="ionicons">
+      <ion-icon name="ios-trash" item-end color="danger"  (click)="deletar(item.id)"></ion-icon>
+      <ion-icon name="ios-trash" name="ios-create" item-end color="danger" (click)="itemSelected(item)"></ion-icon>
+      <ion-card-content>
+      <ion-card-title>
+        <h2> {{item.nome}}</h2>
+        </ion-card-title>
+    </ion-card-content >
+    </ion-card-content>
+  </ion-card>
+  
   <!-- Nenhum estado na lista -->
   <ion-list *ngIf="!items.length">
     <ion-item text-center>
