@@ -1,18 +1,31 @@
 <ion-header>
   <ion-navbar color="secondary">
-   <button ion-button menuToggle>
-      <ion-icon name="menu" ></ion-icon>
-   </button>
-    <ion-title>Cadastrar Quarto</ion-title>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- Exibe o nome do estado caso seja uma edição -->
+    <ion-title>Quarto {{item && item.id ? '- ' + item.nome : ''}}</ion-title>
+    <ion-buttons end>
+      <!-- Remove o estado caso seja uma edição -->
+      <!-- <button ion-button *ngIf="item && item.id" icon-only (click)="deleteEstado(item.id)">
+        <ion-icon name="trash"></ion-icon>
+      </button> -->
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
 
-  <form [formGroup]="formGroup" (ngSubmit)="inserirQuarto()">
-      <ion-item>
-        <ion-label stacked>Nome*</ion-label>
-        <ion-input formControlName="nome" type="text"></ion-input>
-      </ion-item>
-      <button class = "bt" ion-button block style="width: 200px;" type="submit" [disabled]="formGroup.invalid">Salvar Cadastro</button>
+<ion-content padding>
+  <!-- Formulário de estado -->
+  <form [formGroup]="formGroup" (ngSubmit)="saveQuarto()">
+    <ion-item>
+      <ion-label stacked>Nome Quarto*</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-buttons margin-top>
+      <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Estado</button>
+      <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+    </ion-buttons>
   </form>
 </ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="secondary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title text-center>Cidades</ion-title>
+    <ion-buttons end>
+      <!-- Novo estado -->
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="list(id)"></ion-refresher>
+  <ion-item *ngFor="let item of items">
+    {{item.nome}}
+    {{item.estadoId - item.estado?.nome}}
+  
+   </ion-item>
+  <ion-list *ngIf="!items.length">
+    <ion-item text-center>
+      <span>Nenhuma Cidade Cadastrada!</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

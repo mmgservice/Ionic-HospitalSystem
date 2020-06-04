@@ -25,4 +25,10 @@ export class CidadeService{
         }
       )
     }
+    deletar(id): Observable<CidadeDTO[]>{
+        return this.http.delete<CidadeDTO[]>(`${API_CONFIG.baseUrl}/cidades/${id}`);
+    } 
+    update(cidade: CidadeDTO) {
+        return this.http.put(`${API_CONFIG.baseUrl}/cidades/${cidade.id}`, cidade);
+    }
 }

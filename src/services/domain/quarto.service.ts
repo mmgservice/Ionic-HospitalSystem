@@ -14,6 +14,10 @@ export class QuartoService{
     findAll(): Observable<QuartoDTO[]>{
         return this.http.get<QuartoDTO[]>(`${API_CONFIG.baseUrl}/quartos`);
     }
+
+    update(quarto: QuartoDTO){
+        return this.http.put(`${API_CONFIG.baseUrl}/quartos/${quarto.id}`, quarto);
+    }
     
     insert(obj: QuartoDTO){
         return this.http.post(`${API_CONFIG.baseUrl}/quartos`,
@@ -23,5 +27,6 @@ export class QuartoService{
             responseType: "text"
         }
       )
+
     }
 }

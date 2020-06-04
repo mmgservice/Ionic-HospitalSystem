@@ -123,6 +123,12 @@ export class MyApp {
   cadastroEstado(){
     this.nav.setRoot("EstadoListPage");
   }
+  cadastroCidade(){
+    this.nav.setRoot('CidadeListPage');
+  }
+  cadastroQuarto(){
+      this.nav.setRoot('QuartoListPage');
+  }
 
 
 }

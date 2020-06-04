@@ -9,9 +9,9 @@
     <ion-title>Estado {{item && item.id ? '- ' + item.nome : ''}}</ion-title>
     <ion-buttons end>
       <!-- Remove o estado caso seja uma edição -->
-      <button ion-button *ngIf="item && item.id" icon-only (click)="deleteEstado(item.id)">
+      <!-- <button ion-button *ngIf="item && item.id" icon-only (click)="deleteEstado(item.id)">
         <ion-icon name="trash"></ion-icon>
-      </button>
+      </button> -->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
