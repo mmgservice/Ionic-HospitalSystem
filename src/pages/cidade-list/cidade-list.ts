@@ -20,7 +20,7 @@ items: CidadeDTO[] = [];
 estado: EstadoDTO[] = [];
 
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loadingCtl: LoadingController,
               public cidadeService: CidadeService,
@@ -28,11 +28,11 @@ estado: EstadoDTO[] = [];
   }
 
   ionViewWillEnter(){
-    this.list(); 
+    this.list();
   }
-  
+
   ngOnInit(): void{
-     
+
   }
 
   list(){
@@ -42,17 +42,15 @@ estado: EstadoDTO[] = [];
       this.closeLoading();
       this.items = response;
     },error => {
-      this.loading = false;
-    })
-    this.estadoService.findAll().subscribe(response => {
-      this.estado = response;
+      // TODO - EXIBIR MSG DE ERRO NA TELA
+      this.closeLoading();
     });
   }
 
   newItem(){
     this.navCtrl.push('CidadePage');
   }
-  
+
   itemSelected(item: CidadeDTO, estado: EstadoDTO){
     this.navCtrl.push('CidadePage', {item: item , estado:estado});
   }

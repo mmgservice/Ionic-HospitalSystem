@@ -14,11 +14,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-refresher (ionRefresh)="list(id)"></ion-refresher>
+  <ion-refresher (ionRefresh)="list()"></ion-refresher>
   <ion-item *ngFor="let item of items">
-    {{item.nome}}
-    {{item.estadoId - item.estado?.nome}}
-  
+    {{item.nome + ' - ' + item.estado?.nome}}
+
    </ion-item>
   <ion-list *ngIf="!items.length">
     <ion-item text-center>

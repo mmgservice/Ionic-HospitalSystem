@@ -13,48 +13,47 @@ import { CidadeDTO } from '../../modules/cidade.dto';
 export class CidadePage implements OnInit{
 
   formGroup: FormGroup;
-  estado: EstadoDTO[];
+  listaEstado: EstadoDTO[];
   loading: any;
   item: CidadeDTO
 
-  
 
-  constructor(public navCtrl: NavController, 
+
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public cidadeservice: CidadeService,
               public estadoservice: EstadoService,
               public formBuilder: FormBuilder,
               public loadingCtrl: LoadingController,
               public alertControler: AlertController
-  ) {         
-     const cidade = this.navParams.get('item');   
+  ) {
+     const cidade = this.navParams.get('item');
      if(cidade && cidade.id ){
       this.item = cidade;
      }
-     this.selectEstado();
+     this.listEstado();
   }
 
   ngOnInit(): void{
    // this.selectCidade();
     this.formGroup = this.formBuilder.group({
-      id: [null,this.item && this.item.id ? Validators.required: null], 
+      id: [null,this.item && this.item.id ? Validators.required: null],
       nome: [null ,Validators.required],
-      estadoId: [null,Validators.required]
-      //estadoId: [null,this.estado && this.estado.id ? Validators.required: null]
+      estado: [null,Validators.required]
     });
 
     if(this.item && this.item.id){
       this.formGroup.patchValue({
         id: this.item.id,
         nome: this.item.nome,
-        estadoId: this.item.estadoId
+        estado: this.item.estado
       })
     }
   }
 
-  selectEstado(){
+  listEstado(){
     this.estadoservice.findAll().subscribe(response =>{
-      this.estado = response;
+      this.listaEstado = response;
     })
   }
   saveCidade(){
@@ -85,9 +84,9 @@ export class CidadePage implements OnInit{
         this.closeLoading()
         // TODO - verificar erro e exibir msg de erro
       }
-      
+
     )
-  
+
   }
   showLoading() {
     this.loading = this.loadingCtrl.create({
@@ -107,7 +106,7 @@ export class CidadePage implements OnInit{
       this.navCtrl.popToRoot();
     }
   }
-  
+
   /**
    * Atualizo os dados do cidade
    * @param cidade
@@ -133,6 +132,6 @@ export class CidadePage implements OnInit{
         this.closeLoading();
         // TODO - verificar erro e exibir msg de erro
       }
-    ) 
+    )
   }
 }
