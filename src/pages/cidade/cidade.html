@@ -22,13 +22,13 @@
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
       <ion-item>
-        <ion-label multiple="true" >Estado*</ion-label> 
-        <ion-select formControlName = "estadoId">
-          <ion-option *ngFor="let e of estado" [value]="e.id">{{e.nome}}</ion-option>
+        <ion-label>Estado*</ion-label>
+        <ion-select formControlName = "estado">
+          <ion-option *ngFor="let e of listaEstado" [value]="e">{{e.nome}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-buttons margin-top>
-        <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Estado</button>
+        <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Cidade</button>
         <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
       </ion-buttons>
     </form>
