@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriaMedicamentoDTO } from '../../modules/categoriamedicamento.dto';
-import { MedicoDadosDTO } from '../../modules/medicodados.dto';
+import { MedicoDTO } from '../../modules/medico.dto';
 import { CategoriaMedicamentoService } from '../../services/categoriamedicamento.service';
 
 

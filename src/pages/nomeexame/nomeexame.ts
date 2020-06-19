@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { CategoriaExameDTO } from './../../modules/categoriaexame.dto';
+import { NomeExameDTO } from './../../modules/nomeexame.dto';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { CategoriaExameService } from '../../services/domain/categoriaexame.service';
 import { NomeExameService } from '../../services/domain/nomeexame.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoriaExameDTO } from '../../modules/categoriaexame.dto';
 
 /**
  * Generated class for the NomeexamePage page.
@@ -17,49 +18,132 @@ import { CategoriaExameDTO } from '../../modules/categoriaexame.dto';
   selector: 'page-nomeexame',
   templateUrl: 'nomeexame.html',
 })
-export class NomeexamePage {
+export class NomeexamePage  implements OnInit{
 
-  formGroup: FormGroup;
-  categoria: CategoriaExameDTO[]
+  loading: any;
+  formGroupName: FormGroup;
+  item: NomeExameDTO;
+  listaCategoria: CategoriaExameDTO[];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public nomeexameservice: NomeExameService,
               public formbuilder: FormBuilder,
               public alertcontroler: AlertController,
+              public loadingCtrl: LoadingController,
               public categoriaexameservice: CategoriaExameService) {
 
-                this.formGroup = this. formbuilder.group({
-                  nome:["",Validators.required],
-                  valor:["",Validators.required],
-                  categoriaExameId:[null,Validators.required]
-                })
+              const nomeExame = this.navParams.get('item');
+              if(nomeExame && nomeExame.id){
+                 this.item = nomeExame;
+              } 
+
+              this.listCategoria();
   }
 
-  ionViewDidLoad() {
-    this.categoriaexameservice.findAll().subscribe (response =>{
-      this.categoria = response;
+  ngOnInit(): void {
+    this.formGroupName = this.formbuilder.group({
+      id: [null,this.item && this.item.id ? Validators.required: null],
+      nomedoexame: [null ,Validators.required],
+      valor: [null,Validators.required],
+      categoriaExame: [null, Validators.required]
+    });
+
+    if(this.item && this.item.id){
+      this.formGroupName.patchValue({
+        id: this.item.id,
+        nome: this.item.nomedoexame,
+        valor: this.item.valor,
+        categoriaExame: this.item.categoria
+         
+      })
+    }
+  }
+
+  listCategoria(){
+    this.categoriaexameservice.findAll().subscribe(response =>{
+      this.listaCategoria = response;
     })
   }
 
-  inserirCategoria(){
-    this.categoriaexameservice.insert(this.formGroup.value).subscribe(response =>{
-      this.insertOk();
-    },
-    error =>{}
+  saveNomeExame(){
+    const nomeExame = this.formGroupName.value as NomeExameDTO;
+    if(nomeExame.id){
+      this.updateNomeExame(nomeExame);
+    }else{
+      this.insertNomeExame(nomeExame);
+    }
+  }
+
+  insertNomeExame(nome: NomeExameDTO){
+    this.showLoading();
+    this.nomeexameservice.insert(nome).subscribe(response => {
+    this.closeLoading();
+        let alert = this.alertcontroler.create({
+          title: "Sucesso",
+          message: "Cadastro efetuado com sucesso!",
+          buttons: [{
+            text: "OK"
+          }]
+        });
+        alert.present();
+        alert.onDidDismiss(() => {
+          this.back();
+        });
+      },
+      error => {
+        this.closeLoading()
+        // TODO - verificar erro e exibir msg de erro
+      }
+
     )
   }
-  insertOk(){
-    let alert = this.alertcontroler.create({
-       title: "Cadastrado",
-       message: "Cadasrtro efetuado com sucesso!",
-       buttons:[{
-         text: "OK"
-       }]
-    })
-    
-    alert.present();
+
+ /**
+   * Atualizo os dados do cidade
+   * @param nome
+   */
+
+  private updateNomeExame(nome: NomeExameDTO) {
+    this.showLoading();
+    this.nomeexameservice.update(nome).subscribe(response => {
+        this.closeLoading();
+        let alert = this.alertcontroler.create({
+          title: "Sucesso",
+          message: "Cadastro efetuado com sucesso!",
+          buttons: [{
+            text: "OK"
+          }]
+        });
+        alert.present();
+        alert.onDidDismiss(() => {
+          this.back();
+        });
+      },
+      error => {
+        this.closeLoading();
+        // TODO - verificar erro e exibir msg de erro
+      }
+    )
   }
 
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: "Aguarde..."
+    });
+    this.loading.present();
+  }
+  closeLoading() {
+    if (this.loading) {
+      this.loading.dismiss();
+    }
+  }
+  back() {
+    if (this.navCtrl.canGoBack()) {
+      this.navCtrl.pop();
+    } else {
+      this.navCtrl.popToRoot();
+    }
+  }
 }
 

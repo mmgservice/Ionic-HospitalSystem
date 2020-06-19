@@ -17,8 +17,6 @@ export class CidadePage implements OnInit{
   loading: any;
   item: CidadeDTO
 
-
-
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public cidadeservice: CidadeService,

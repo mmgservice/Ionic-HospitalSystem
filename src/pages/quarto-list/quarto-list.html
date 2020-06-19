@@ -17,7 +17,7 @@
   <ion-refresher (ionRefresh)="list()"></ion-refresher>
 
   <ion-card *ngFor="let item of items" >
-      <ion-icon name="ios-trash" item-end color="danger"  (click)="deletar(item.id)"></ion-icon>
+      <ion-icon name="ios-trash" item-end color="danger"  (click)="(item.id)"></ion-icon>
       <ion-icon name="ios-trash" name="ios-create" item-end color="danger" (click)="itemSelected(item)"></ion-icon>
       <ion-card-content>
       <ion-card-title>

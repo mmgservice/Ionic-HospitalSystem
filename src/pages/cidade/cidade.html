@@ -18,11 +18,11 @@
 <ion-content padding>
   <form [formGroup]="formGroup" (ngSubmit)="saveCidade()">
     <ion-item>
-      <ion-label stacked>Nome do Estado*</ion-label>
+      <ion-label stacked>Nome da Cidade*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
       <ion-item>
-        <ion-label>Estado*</ion-label>
+        <ion-label stacked>Estado*</ion-label>
         <ion-select formControlName = "estado">
           <ion-option *ngFor="let e of listaEstado" [value]="e">{{e.nome}}</ion-option>
         </ion-select>

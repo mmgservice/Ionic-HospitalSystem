@@ -23,4 +23,12 @@ export class CategoriaExameService{
         }
       );
   }
+
+  update(categoria: CategoriaExameDTO) {
+        return this.http.put(`${API_CONFIG.baseUrl}/categoriaexames/${categoria.id}`, categoria);  
+    }
+
+    deletar(id) : Observable<CategoriaExameDTO[]>  {
+        return this.http.delete<CategoriaExameDTO[]>(`${API_CONFIG.baseUrl}/categoriaexames/${id}`);
+    }
 }

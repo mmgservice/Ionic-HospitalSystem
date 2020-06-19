@@ -1,6 +1,6 @@
+import { ExpecialidadeEnfermagemDTO } from './../../modules/expenfermagem.dto';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { ExpecialidadeEnfermagemDTO } from "../../modules/expenfermagem.dto";
 import { Observable } from "rxjs";
 import { API_CONFIG } from "../../config/api.config";
 
@@ -22,4 +22,15 @@ export class ExpecialidadeEnfermagemService{
         }
       )
       }
+
+      update(expecialidade: ExpecialidadeEnfermagemDTO) {
+        return this.http.put(`${API_CONFIG.baseUrl}/expecialidadeenfermagem/${expecialidade.id}`, expecialidade);
+      }
+
+    deletar(id) : Observable<ExpecialidadeEnfermagemDTO[]>  {
+        return this.http.delete<ExpecialidadeEnfermagemDTO[]>(`${API_CONFIG.baseUrl}/expecialidadeenfermagem/${id}`);
+    }
+    findById(expecialidade_id : string) : Observable<ExpecialidadeEnfermagemDTO[]>  {
+        return this.http.get<ExpecialidadeEnfermagemDTO[]>(`${API_CONFIG.baseUrl}/expecialidadeenfermagem/${expecialidade_id}`);
+    }
 }

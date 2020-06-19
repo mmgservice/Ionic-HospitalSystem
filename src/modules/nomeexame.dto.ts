@@ -1,5 +1,8 @@
+import { CategoriaExameDTO } from './categoriaexame.dto';
+
 export interface NomeExameDTO{
     id: string,
-    nome: string,
-    valor:string
+    nomedoexame: string,
+    valor:string,
+    categoria?: CategoriaExameDTO
 }

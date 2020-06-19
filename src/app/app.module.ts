@@ -1,3 +1,4 @@
+import { MedicoService } from './../services/domain/medico.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -12,11 +13,11 @@ import { CidadeService } from '../services/domain/cidade.service';
 import { QuartoService } from '../services/domain/quarto.service';
 import { LeitoService } from '../services/domain/leito.service';
 import { ExpecialideMedicoService } from '../services/domain/expmedico.service';
-import { MedicoDadosService } from '../services/domain/medicodados.service';
 import { ExpecialidadeEnfermagemService } from '../services/domain/expenfermagem';
-import { EnfermagemDadosService } from '../services/domain/enfermagemdados.service';
 import { CategoriaExameService } from '../services/domain/categoriaexame.service';
 import { NomeExameService } from '../services/domain/nomeexame.service';
+import { EnfermagemService } from '../services/domain/enfermagem.service';
+import { PacienteService } from '../services/domain/paciente.service';
 
 
 @NgModule({
@@ -39,15 +40,16 @@ import { NomeExameService } from '../services/domain/nomeexame.service';
     AlergiaService,
     ExpecialideMedicoService,
     UsuarioService,
-    MedicoDadosService,
+    MedicoService,
     EstadoService,
     CidadeService,
     QuartoService,
     LeitoService,
     ExpecialidadeEnfermagemService,
-    EnfermagemDadosService,
+    EnfermagemService,
     CategoriaExameService,
-    NomeExameService
+    NomeExameService,
+    PacienteService,
   ]
 })
 export class AppModule {}

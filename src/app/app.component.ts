@@ -104,10 +104,10 @@ export class MyApp {
   }
  
   medico(){
-    this.nav.setRoot("MedicodadosPage");
+    this.nav.setRoot("MedicoPage");
   }
   enfermagem(){
-    this.nav.setRoot("EnfermagemdadosPage");
+    this.nav.setRoot("EnfermagemPage");
   }
   expecialidadeEnf(){
     this.nav.setRoot('ExpenfermagemPage');
@@ -117,6 +117,10 @@ export class MyApp {
   }
   nomeexame(){
     this.nav.setRoot('NomeexamePage');
+  }
+
+  paciente(){
+    this.nav.setRoot('PacientePage');
   }
 
 /*----------------------MENU------CONSULTAR-------------------*/
@@ -130,5 +134,31 @@ export class MyApp {
       this.nav.setRoot('QuartoListPage');
   }
 
+  cadastroAlergia(){
+    this.nav.setRoot('AlergiaListPage');
+  }
 
+  cadastroExpecialidadeMed(){
+    this.nav.setRoot('ExpmedicoListPage');
+  }
+
+  cadastroMedico(){
+    this.nav.setRoot('MedicoListPage');
+  }
+
+  cadastroCategoriaExame(){
+    this.nav.setRoot('CategoriaexameListPage');
+  }
+
+  cadastroNomeExame(){
+    this.nav.setRoot('NomeexameListPage')
+  }
+
+  cadastroExpEnfermagem(){
+    this.nav.setRoot('ExpenfermagemListPage');
+  }
+  cadastroEnfermagem(){
+    this.nav.setRoot('EnfermagemListPage');
+  }
+  
 }

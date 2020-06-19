@@ -1,0 +1,159 @@
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Paciente</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="savePaciente()">
+
+      <ion-item>
+        <ion-label stacked>Date</ion-label>
+        <ion-datetime [(ngModel)]="date" formControlName="datasistema" displayFormat="MMMM DD, YYYY" min="2017" max="2100"></ion-datetime>
+      </ion-item>
+
+     <ion-item>
+      <ion-label stacked>Nome*</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sobrenome*</ion-label>
+      <ion-input formControlName="sobrenome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data Nascimento*</ion-label>
+      <ion-input formControlName="datanascimento" type="date"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Idade*</ion-label>
+      <ion-input formControlName="idade" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>RG*</ion-label>
+      <ion-input formControlName="rg" [brmasker]="{mask:'00000000-0', len:10}" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CPF*</ion-label>
+      <ion-input type="text" formControlName="cpf" [brmasker]="{mask:'000.000.000-00', len:14}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label multiple="true" stacked >Sexo*</ion-label> 
+      <ion-select formControlName = "sexo">
+          <ion-option value = "Maculino">Masculino</ion-option>
+           <ion-option value = "Feminino">Feminino</ion-option>
+      </ion-select>
+     </ion-item>
+
+     <ion-item>
+      <ion-label multiple="true" stacked>Cor*</ion-label> 
+      <ion-select formControlName = "cor">
+          <ion-option value = "Negro">Negro</ion-option>
+          <ion-option value = "Branco">Branco</ion-option>
+          <ion-option value = "Pardo">Pardo</ion-option>
+          <ion-option value = "Amarelo">Amarelo</ion-option>
+          <ion-option value = "Vermelho">Vermelho</ion-option>
+      </ion-select>
+     </ion-item>
+
+     <ion-item>
+      <ion-label stacked>Endereço*</ion-label>
+      <ion-input formControlName="endereco" type="text"></ion-input>
+    </ion-item>
+   
+    <ion-item>
+      <ion-label stacked>Complemento</ion-label>
+      <ion-input formControlName="complemento" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CEP*</ion-label>
+      <ion-input type="text" formControlName="cep" [brmasker]="{mask:'00.000-000', len:10}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Bairro*</ion-label>
+      <ion-input type="text" formControlName="bairro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label multiple="true" stacked>Estado Civil*</ion-label> 
+      <ion-select formControlName = "estadocivil">
+          <ion-option value = "Solteiro">Solteiro</ion-option>
+          <ion-option value = "Casado">Casado</ion-option>
+      </ion-select>
+     </ion-item>
+
+     <ion-item>
+      <ion-label stacked>Telefone*</ion-label>
+      <ion-input type="text" formControlName="telefone1" [brmasker]="{mask:'(00) 0000-0000', len:14}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked >Telefone</ion-label>
+      <ion-input type="text" formControlName="telefone2" [brmasker]="{mask:'(00) 0000-0000', len:14}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input type="text" formControlName="telefone3" [brmasker]="{mask:'(00) 0000-0000', len:14}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Nome da Mãe*</ion-label>
+      <ion-input type="text" formControlName="nomedamae"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Nome do Pai*</ion-label>
+      <ion-input type="text" formControlName="nomedopai"></ion-input>
+    </ion-item>
+   
+    <ion-item>
+      <ion-label multiple="true" stacked >Estado*</ion-label> 
+      <ion-select formControlName = "estado" (ionChange)="updateCidades()">
+          <ion-option *ngFor="let estados of listaEstado " [value]="estados">{{estados.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cidade*</ion-label>
+      <ion-select formControlName="cidade">
+        <ion-option *ngFor="let cidade of listaCidade" [value]="cidade">{{cidade.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Alergia*</ion-label>
+      <ion-select formControlName="alergia">
+        <ion-option *ngFor="let alergia of listaAlergia" [value]="alergia">{{alergia.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Observação</ion-label>
+      <ion-textarea formControlName="obs"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label multiple="true" stacked>Residencia*</ion-label> 
+      <ion-select formControlName = "residenciaId">
+          <ion-option value = "1">Casa</ion-option>
+          <ion-option value = "2">Apartamento</ion-option>
+          <ion-option value = "3">Alugado</ion-option>
+      </ion-select>
+     </ion-item>
+     <ion-buttons margin-top>
+        <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Paciente</button>
+        <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+    </ion-buttons>
+  </form>
+</ion-content>

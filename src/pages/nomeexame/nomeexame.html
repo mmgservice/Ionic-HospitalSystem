@@ -1,17 +1,27 @@
 <ion-header>
   <ion-navbar color="secondary">
-   <button ion-button menuToggle>
-      <ion-icon name="menu" ></ion-icon>
-   </button>
-    <ion-title>Cadastrar Nome do Exame </ion-title>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- Exibe o nome do estado caso seja uma edição -->
+    <ion-title>Nome Exame</ion-title>
+    <ion-buttons end>
+      <!-- Remove o estado caso seja uma edição -->
+      <!-- <button ion-button *ngIf="item && item.id" icon-only (click)="deleteEstado(item.id)">
+        <ion-icon name="trash"></ion-icon>
+      </button> -->
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding>
 
-  <form [formGroup]="formGroup" (ngSubmit)="inserirCategoria()">
+  <form [formGroup]="formGroupName" (ngSubmit)="saveNomeExame()">
       <ion-item>
         <ion-label stacked>Nome*</ion-label>
-        <ion-input formControlName="nome" type="text"></ion-input>
+        <ion-input formControlName="nomedoexame" type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked>Valor*</ion-label>
@@ -19,10 +29,13 @@
       </ion-item>
       <ion-item>
         <ion-label multiple="true" >Categoria do Exame*</ion-label> 
-        <ion-select formControlName = "categoriaExameId">
-            <ion-option *ngFor="let categorias of categoria" [value]="categorias.id">{{categorias.nome}}</ion-option>
+        <ion-select formControlName = "categoriaExame">
+            <ion-option *ngFor="let categoria of listaCategoria" [value]="categoria">{{categoria.nome}}</ion-option>
         </ion-select>
       </ion-item>
-      <button class = "bt" ion-button block style="width: 200px;" type="submit" [disabled]="formGroup.invalid">Salvar Cadastro</button>
+      <ion-buttons margin-top>
+        <button ion-button block color="primary" type="submit" [disabled]="formGroupName.invalid">Salvar Nome Exame</button>
+        <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+      </ion-buttons>
   </form>
 </ion-content>

@@ -23,4 +23,16 @@ export class AlergiaService{
         );
   
     }
+
+    findById(alergia_id : string) : Observable<AlergiaDTO[]>  {
+        return this.http.get<AlergiaDTO[]>(`${API_CONFIG.baseUrl}/alergia/${alergia_id}`);
+    }
+
+    update(alergia: AlergiaDTO) {
+        return this.http.put(`${API_CONFIG.baseUrl}/alergias/${alergia.id}`, alergia);  
+    }
+
+    deletar(id) : Observable<AlergiaDTO[]>  {
+        return this.http.delete<AlergiaDTO[]>(`${API_CONFIG.baseUrl}/alergias/${id}`);
+    }
 }

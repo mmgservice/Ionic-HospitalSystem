@@ -1,9 +1,8 @@
+import { ExpecialidadeEnfermagemDTO } from './../../modules/expenfermagem.dto';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ExpecialidadeEnfermagemService } from '../../services/domain/expenfermagem';
-import { ExpecialidadeEnfermagemDTO } from '../../modules/expenfermagem.dto';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @IonicPage()
 @Component({
@@ -18,10 +17,10 @@ export class ExpenfermagemPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
+    public alertControl: AlertController,
     public loadingCtrl: LoadingController,
     public formBuilider: FormBuilder,
-    public alertControl: AlertController,
+     public navParams: NavParams,
     public expecialidadeService: ExpecialidadeEnfermagemService,
     
     ) {
@@ -43,19 +42,20 @@ export class ExpenfermagemPage implements OnInit {
       })
     }
   }
-  /*
-  saveExpenf(){
-    const expenfermagem = this.formGroup.value as ExpecialidadeEnfermagemDTO;
-    if(expenfermagem.id){
-     // this.updateExpenf(expenfermagem);
-         Message: "Em desenvolvimento";
-    }else{
-      this.insertExpenf(expenfermagem);
+  
+  saveExpecialidade(){
+    const expecialidade = this.formGroup.value as ExpecialidadeEnfermagemDTO;
+    // TODO - verificar se os dados foram preenchidos
+    if (expecialidade.id) { // se o estado já tem id ele já foi cadastrado na base, então faço um update
+      this.updateExpecialidade(expecialidade);
+    } else {
+      this.insertExpecialidade(expecialidade);
     }
   }
-  insertExpenf(expenfermagem: ExpecialidadeEnfermagemDTO){
-      this.showLoading();
-      this.expecialidadeService.insert(expenfermagem).subscribe(response =>{
+
+  insertExpecialidade(expecialidade: ExpecialidadeEnfermagemDTO){
+    this.showLoading();
+    this.expecialidadeService.insert(expecialidade).subscribe(response => {
         this.closeLoading();
         let alert = this.alertControl.create({
           title: "Sucesso",
@@ -75,25 +75,45 @@ export class ExpenfermagemPage implements OnInit {
       }
     )
   }
+
+   /**
+   * Atualizo os dados do estado
+   * @param expecialidade
+   */
+  private updateExpecialidade(expecialidade: ExpecialidadeEnfermagemDTO) {
+    this.showLoading();
+    this.expecialidadeService.update(expecialidade).subscribe(response => {
+        this.closeLoading();
+        let alert = this.alertControl.create({
+          title: "Sucesso",
+          message: "Cadastro efetuado com sucesso!",
+          buttons: [{
+            text: "OK"
+          }]
+        });
+        alert.present();
+        alert.onDidDismiss(() => {
+          this.back();
+        });
+      },
+      error => {
+        this.closeLoading();
+        // TODO - verificar erro e exibir msg de erro
+      }
+    )
+  }
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: "Aguarde..."
     });
     this.loading.present();
   }
-
-  /**
-   * Fecha o loading
-   
   closeLoading() {
     if (this.loading) {
       this.loading.dismiss();
     }
   }
-
-  /**
-   * Volta para a tela que chamou
-   
   back() {
     if (this.navCtrl.canGoBack()) {
       this.navCtrl.pop();
@@ -101,6 +121,5 @@ export class ExpenfermagemPage implements OnInit {
       this.navCtrl.popToRoot();
     }
   }
-  */
 
 }

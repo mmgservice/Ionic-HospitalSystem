@@ -1,0 +1,38 @@
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Médico</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="saveMedico()">
+    <ion-item>
+      <ion-label stacked>Nome*</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked>CRM*</ion-label>
+      <ion-input formControlName="crm" type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label multiple="true" >Expecialidade*</ion-label> 
+      <ion-select formControlName = "expecialidade">
+          <ion-option *ngFor="let expmedico of listaExpMedico; first as f" [value]="expmedico" [selected]="f">{{expmedico.expecialidade}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-buttons margin-top>
+      <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Médico</button>
+      <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+    </ion-buttons>
+  </form>
+</ion-content>
