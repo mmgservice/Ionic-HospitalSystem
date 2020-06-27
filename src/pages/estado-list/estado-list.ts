@@ -92,7 +92,6 @@ export class EstadoListPage implements OnInit {
       this.refresher.complete();
     }
   }
-  
   deletar(id){
     this.estadoService.deletar(id).subscribe(response => {
       this.items = response;

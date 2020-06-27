@@ -18,7 +18,10 @@ import { CategoriaExameService } from '../services/domain/categoriaexame.service
 import { NomeExameService } from '../services/domain/nomeexame.service';
 import { EnfermagemService } from '../services/domain/enfermagem.service';
 import { PacienteService } from '../services/domain/paciente.service';
-
+import { MedicamentoService } from '../services/domain/medicamento.service';
+import { FarmaciaService } from '../services/domain/farmacia.service';
+import { BrMaskerModule } from 'brmasker-ionic-3';
+import { CategoriaMedicamentoService } from '../services/categoriamedicamento.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { PacienteService } from '../services/domain/paciente.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrMaskerModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -50,6 +54,11 @@ import { PacienteService } from '../services/domain/paciente.service';
     CategoriaExameService,
     NomeExameService,
     PacienteService,
+    CategoriaMedicamentoService,
+    MedicamentoService,
+    FarmaciaService,
+    CategoriaExameService,
+    
   ]
 })
 export class AppModule {}

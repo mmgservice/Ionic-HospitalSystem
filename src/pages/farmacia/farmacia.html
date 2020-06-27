@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Farmacia</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="saveFarmacia()">
+    <ion-item>
+      <ion-label stacked>Data Sistema*</ion-label>
+      <ion-input formControlName="datasistema" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Dosagem*</ion-label>
+      <ion-input formControlName="dosagem" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Quantidade*</ion-label>
+      <ion-input formControlName="quantidade" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Quantidade Total*</ion-label>
+      <ion-input formControlName="quantidadetotal" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Data Vencimento*</ion-label>
+      <ion-input formControlName="datavencimento" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Valor*</ion-label>
+      <ion-input formControlName="valor" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Valor Total*</ion-label>
+      <ion-input formControlName="valortotal" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Medicamento*</ion-label>
+      <ion-select formControlName = "medicamento">
+        <ion-option *ngFor="let e of listaMedicamento" [value]="e">{{e.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-buttons margin-top>
+      <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar</button>
+    </ion-buttons>
+    </form>
+  </ion-content>
+  

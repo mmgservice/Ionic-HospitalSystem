@@ -124,7 +124,7 @@ export class EstadoPage implements OnInit {
         this.closeLoading();
         let alert = this.alertControl.create({
           title: "Sucesso",
-          message: "Estado removido com sucesso!",
+          message: "Cadastro removido com sucesso!",
           buttons: [{
             text: "OK"
           }]

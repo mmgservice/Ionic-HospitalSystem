@@ -17,6 +17,8 @@ export class CidadePage implements OnInit{
   loading: any;
   item: CidadeDTO
 
+
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public cidadeservice: CidadeService,
@@ -58,9 +60,11 @@ export class CidadePage implements OnInit{
     const cidade = this.formGroup.value as CidadeDTO;
     if(cidade.id){
       this.updateCidade(cidade);
+   
     }else{
       this.insertCidade(cidade);
     }
+    this.navCtrl.setRoot('CidadeListPage');
   }
   insertCidade(cidade: CidadeDTO){
     this.showLoading();
@@ -128,8 +132,11 @@ export class CidadePage implements OnInit{
       },
       error => {
         this.closeLoading();
+        
         // TODO - verificar erro e exibir msg de erro
       }
+      
     )
+
   }
 }

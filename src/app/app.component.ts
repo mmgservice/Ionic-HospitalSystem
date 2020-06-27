@@ -123,6 +123,8 @@ export class MyApp {
     this.nav.setRoot('PacientePage');
   }
 
+  
+
 /*----------------------MENU------CONSULTAR-------------------*/
   cadastroEstado(){
     this.nav.setRoot("EstadoListPage");
@@ -160,5 +162,34 @@ export class MyApp {
   cadastroEnfermagem(){
     this.nav.setRoot('EnfermagemListPage');
   }
-  
+
+
+
+  farmacia(){
+    this.nav.setRoot('FarmaciaPage');
+  }
+  medicamento(){
+    this.nav.setRoot('MedicamentoPage');
+  }
+  categoriaMedicamento(){
+    this.nav.setRoot('CategoriamedicamentoPage');
+  }
+
+
+  cadastroLeito(){
+    this.nav.setRoot('LeitoListPage');
+  }
+  cadastroMedicamento(){
+    this.nav.setRoot('MedicamentoListPage');
+  }
+  cadastroCategoriaMedicamento(){
+    this.nav.setRoot('MedicamentoListPage');
+  }
+  cadastroFarmacia(){
+    this.nav.setRoot('FarmaciaListPage');
+  }
+  cadastroPaciente(){
+    this.nav.setRoot('PacienteListPage');
+  }
+
 }

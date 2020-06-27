@@ -28,4 +28,10 @@
       </ion-card-content >
       </ion-card-content>
     </ion-card>
+     <!-- Nenhuma Medico na lista -->
+  <ion-list *ngIf="!items.length">
+    <ion-item text-center>
+      <span>Nenhum Médico cadastrado!</span>
+    </ion-item>
+  </ion-list>
 </ion-content>

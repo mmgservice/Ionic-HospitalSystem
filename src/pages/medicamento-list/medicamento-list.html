@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="secondary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title text-center>Medicamentos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="list()"></ion-refresher>
+  <ion-card *ngFor="let item of items" >
+    <ion-icon name="ios-trash" item-end color="danger"  (click)="deletar(item.id)"></ion-icon>
+    <ion-icon name="ios-trash" name="ios-create" item-end color="danger" (click)="itemSelected(item)"></ion-icon>
+    <ion-card-content>
+    <ion-card-title>
+      {{item.nome + ' - ' + item.categoriamedicamento?.nome}}
+      </ion-card-title>
+  </ion-card-content >
+</ion-card>
+  <ion-list *ngIf="!items.length">
+    <ion-item text-center>
+      <span>Nenhum Medicamento Cadastrado!</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

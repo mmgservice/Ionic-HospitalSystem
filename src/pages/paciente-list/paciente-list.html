@@ -1,0 +1,51 @@
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  <ion-title text-center>Pacientes</ion-title>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="newItem()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="list()"></ion-refresher>
+  <ion-card *ngFor="let item of items" >
+    <ion-card-content id="ionicons">
+      <ion-icon name="ios-trash" name="ios-create" item-end color="danger" (click)="itemSelected(item)"></ion-icon>
+      <ion-card-content>
+      <ion-card-title>
+        <h2> {{"Nome: " + item.nome}}</h2>
+        <h2> {{"Sobrenome: " + item.sobrenome}}</h2>
+        <h2> {{"Data Nascimento: " + item.datanascimento}}</h2>
+        <h2> {{"Idade: " + item.idade}}</h2>
+        <h2> {{"RG: " + item.rg}}</h2>
+        <h2> {{"CPF: " + item.cpf}}</h2>
+        <h2> {{"Cor: " + item.cor}}</h2>
+        <h2> {{"Endereço: " + item.endereco}}</h2>
+        <h2> {{"Complemento: " + item.complemento}}</h2>
+        <h2> {{"CEP: " + item.cep}}</h2>
+        <h2> {{"Bairro: " + item.bairro}}</h2>
+        <h2> {{"Estado Civil: " + item.estadocivil}}</h2>
+        <h2> {{"OBS: " + item.obs}}</h2>
+        <h2> {{"Noma da Mãe: " + item.nomedamae}}</h2>
+        <h2> {{"Nome do Pai: " + item.nomedopai}}</h2>
+        <h2> {{"Cidade: " + item.cidade?.nome}}</h2>
+        <h2> {{"Alergia: " + item.alergia?.nome}}</h2>
+        <h2> {{"Residência: " + verficiaResidencia(item.residenciaId)}}</h2>
+      </ion-card-title>
+    </ion-card-content >
+    </ion-card-content>
+  </ion-card>
+   <!-- Nenhuma Nome na lista -->
+   <ion-list *ngIf="!items.length">
+    <ion-item text-center>
+      <span>Nenhum Paciente cadastrado!</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

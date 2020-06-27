@@ -21,8 +21,8 @@ export class PacientePage implements OnInit{
   formGroup: FormGroup;
   loading: any;
   item: PacienteDTO;
-  listaEstado: EstadoDTO[] = [];
-  listaCidade: CidadeDTO[] = [];
+  listaEstado: EstadoDTO[];
+  listaCidade: CidadeDTO[];
   listaAlergia: AlergiaDTO[] = [];
 
   constructor(
@@ -41,9 +41,10 @@ export class PacientePage implements OnInit{
           this.item = paciente;
       } 
       
+      this.listAlergia();
       this.listEstado();
       this.listCidade();
-      this.listAlergia();
+  
     }
   
     public date: string = new Date().toISOString();
@@ -115,6 +116,7 @@ export class PacientePage implements OnInit{
  listEstado(){
     this.estadoService.findAll().subscribe(response =>{
       this.listaEstado = response;
+      this.updateCidades();
     })
   }
 
@@ -138,16 +140,6 @@ export class PacientePage implements OnInit{
     } else {
       this.insertPaciente(paciente);
     }
-  }
-
-  ionViewDidLoad() {
-    this.estadoService.findAll()
-      .subscribe(response => {
-        this.listaEstado = response;
-        this.formGroup.controls.estado.setValue(this.listaEstado[0].id);
-        this.updateCidades();
-      },
-      error => {});
   }
 
   insertPaciente(paciente: PacienteDTO){
@@ -199,6 +191,7 @@ export class PacientePage implements OnInit{
 
   updateCidades() {
     let estado_id = this.formGroup.value.estado;
+    console.log(estado_id);
     this.cidadeService.findCidade(estado_id)
       .subscribe(response => {
         this.listaCidade = response;

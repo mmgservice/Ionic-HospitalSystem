@@ -23,4 +23,10 @@ export class LeitoService{
         }
       )
     }
+    update(leito: LeitoDTO){
+        return this.http.put(`${API_CONFIG.baseUrl}/leitos/${leito.id}`, leito);
+    }
+    deletar(id): Observable<LeitoDTO[]>{
+        return this.http.delete<LeitoDTO[]>(`${API_CONFIG.baseUrl}/leitos/${id}`);
+    } 
 }

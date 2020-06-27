@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Medicamento</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="saveMedicamento()">
+    <ion-item>
+      <ion-label stacked>Nome do Medicamento*</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label>Categoria Medicamento*</ion-label>
+        <ion-select formControlName = "categoriamedicamento">
+          <ion-option *ngFor="let e of listaCategoria" [value]="e">{{e.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-buttons margin-top>
+        <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Medicamento</button>
+        <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+      </ion-buttons>
+    </form>
+</ion-content>

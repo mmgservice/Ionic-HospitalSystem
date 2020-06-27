@@ -1,14 +1,21 @@
 <ion-header>
   <ion-navbar color="secondary">
-   <button ion-button menuToggle>
-      <ion-icon name="menu" ></ion-icon>
-   </button>
-    <ion-title>Cadastrar Leito</ion-title>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Leito</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
 
-  <form [formGroup]="formGroup" (ngSubmit)="inserirLeito()">
+  <form [formGroup]="formGroup" (ngSubmit)="saveLeito()">
     <ion-item>
       <ion-label stacked>Leito*</ion-label>
       <ion-input formControlName="nomequarto" type="text"></ion-input>
@@ -24,11 +31,13 @@
 
     <ion-item>
       <ion-label multiple="true" >Quarto*</ion-label> 
-      <ion-select formControlName = "quartoId">
-          <ion-option *ngFor="let quartos of quarto" [value]="quartos.id">{{quartos.nome}}</ion-option>
+      <ion-select formControlName = "quarto">
+          <ion-option *ngFor="let quartos of listaQuarto" [value]="quartos">{{quartos.nome}}</ion-option>
       </ion-select>
     </ion-item>
-
-    <button class = "bt" ion-button block style="width: 200px;" type="submit" [disabled]="formGroup.invalid">Salvar Cadastro</button>
+    <ion-buttons margin-top>
+      <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar</button>
+      <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+    </ion-buttons>
 </form>
 </ion-content>

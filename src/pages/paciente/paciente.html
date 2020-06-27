@@ -17,7 +17,7 @@
 
       <ion-item>
         <ion-label stacked>Date</ion-label>
-        <ion-datetime [(ngModel)]="date" formControlName="datasistema" displayFormat="MMMM DD, YYYY" min="2017" max="2100"></ion-datetime>
+        <ion-datetime [(ngModel)]="date" formControlName="datasistema" displayFormat="MMMM DD, YYYY" min="2020" max="2100"></ion-datetime>
       </ion-item>
 
      <ion-item>
@@ -122,7 +122,7 @@
     <ion-item>
       <ion-label multiple="true" stacked >Estado*</ion-label> 
       <ion-select formControlName = "estado" (ionChange)="updateCidades()">
-          <ion-option *ngFor="let estados of listaEstado " [value]="estados">{{estados.nome}}</ion-option>
+          <ion-option *ngFor="let estados of listaEstado " [value]="estados.id">{{estados.nome}}</ion-option>
       </ion-select>
     </ion-item>
 

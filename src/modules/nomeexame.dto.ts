@@ -4,5 +4,5 @@ export interface NomeExameDTO{
     id: string,
     nomedoexame: string,
     valor:string,
-    categoria?: CategoriaExameDTO
+    categoriaExame?: CategoriaExameDTO
 }

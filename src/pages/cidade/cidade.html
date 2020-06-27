@@ -8,21 +8,20 @@
     <!-- Exibe o nome do estado caso seja uma edição -->
     <ion-title>Cidade</ion-title>
     <ion-buttons end>
-      <!-- Remove o estado caso seja uma edição -->
-      <!-- <button ion-button *ngIf="item && item.id" icon-only (click)="deleteEstado(item.id)">
-        <ion-icon name="trash"></ion-icon>
-      </button> -->
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
   <form [formGroup]="formGroup" (ngSubmit)="saveCidade()">
     <ion-item>
-      <ion-label stacked>Nome da Cidade*</ion-label>
+      <ion-label stacked>Nome do Estado*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
       <ion-item>
-        <ion-label stacked>Estado*</ion-label>
+        <ion-label>Estado*</ion-label>
         <ion-select formControlName = "estado">
           <ion-option *ngFor="let e of listaEstado" [value]="e">{{e.nome}}</ion-option>
         </ion-select>
