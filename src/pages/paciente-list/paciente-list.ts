@@ -5,6 +5,7 @@ import { PacienteDTO } from '../../modules/paciente.dto';
 import { PacienteService } from '../../services/domain/paciente.service';
 import { CidadeDTO } from '../../modules/cidade.dto';
 import { EstadoDTO } from '../../modules/estado.dto';
+import { AlergiaDTO } from '../../modules/alergia.dto';
 
 
 @IonicPage()
@@ -66,8 +67,8 @@ export class PacienteListPage implements OnInit {
     }
   }
 
-  itemSelected(item: PacienteDTO,estado: EstadoDTO, cidade: CidadeDTO){
-    this.navCtrl.push('PacientePage', {item: item, estado:estado, cidade: cidade});
+  itemSelected(item: PacienteDTO,estado: EstadoDTO, cidade: CidadeDTO,alergia: AlergiaDTO){
+    this.navCtrl.push('PacientePage', {item: item, estado:estado, cidade: cidade, alergia: alergia});
   }
 
   newItem(){
@@ -89,7 +90,43 @@ export class PacienteListPage implements OnInit {
   
   }
 
-  verificaTelefone(){
-    
-  }
+  verificaTipoSanguineo(id: number){
+    let tipo = "";
+
+    if(id == 1){
+      tipo = "A+";
+    } 
+
+    if(id == 2){
+      tipo = "A-";
+    }
+
+    if(id == 3){
+      tipo = "B+";
+    }
+
+    if(id == 4){
+      tipo = "B-";
+    }
+
+    if(id == 5){
+      tipo = "AB+";
+    }
+
+    if(id == 6){
+      tipo = "AB-";
+    }
+    if(id == 7){
+      tipo = "O+";
+    }
+     
+    if(id == 8){
+      tipo = "O-";
+    }
+
+    return tipo;
+  
+    }
+
+  
 }

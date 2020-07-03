@@ -22,6 +22,7 @@ export class MyApp {
   showMedicoEnfermagem: boolean = false;
   showExpecialidadeEnf: boolean = false;
   showEnfermagem: boolean = false;
+  showFarmacia: boolean = false;
 
   
   pages: Array<{title: string, component: string}>;
@@ -57,6 +58,9 @@ export class MyApp {
   menuItemHandler1(): void {
        this.showSubmenu1 = !this.showSubmenu1;
   }
+  menuFarmacia(): void {
+    this.showFarmacia = !this.showFarmacia;
+ }
   menuPaciente(): void{
       this.showPaciente = ! this.showPaciente;
   }
@@ -121,6 +125,14 @@ export class MyApp {
 
   paciente(){
     this.nav.setRoot('PacientePage');
+  }
+
+  exame(){
+     this.nav.setRoot('ExamePage');
+  }
+
+  prescricao(){
+    this.nav.setRoot('PrescricaoPage');
   }
 
   
@@ -192,4 +204,11 @@ export class MyApp {
     this.nav.setRoot('PacienteListPage');
   }
 
+  cadastroExame(){
+    this.nav.setRoot('ExameListPage');
+  }
+  
+  cadastroPrescricao(){
+    this.nav.setRoot('PrescricaoListPage');
+  }
 }

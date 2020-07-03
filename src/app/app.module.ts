@@ -22,6 +22,8 @@ import { MedicamentoService } from '../services/domain/medicamento.service';
 import { FarmaciaService } from '../services/domain/farmacia.service';
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { CategoriaMedicamentoService } from '../services/categoriamedicamento.service';
+import { ExameService } from '../services/domain/exame.service';
+import { PrescricaoService } from '../services/domain/prescricao.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { CategoriaMedicamentoService } from '../services/categoriamedicamento.se
     MedicamentoService,
     FarmaciaService,
     CategoriaExameService,
+    ExameService,
+    PrescricaoService
     
   ]
 })

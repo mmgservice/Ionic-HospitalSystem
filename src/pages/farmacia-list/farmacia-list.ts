@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Refresher, LoadingController } from 'ionic-angular';
+
+import { IonicPage, NavController, NavParams, Refresher, LoadingController} from 'ionic-angular';
 import { FormGroup } from '@angular/forms';
 import { FarmaciaDTO } from '../../modules/farmacia.dto';
 import { MedicamentoDTO } from '../../modules/medicamento.dto';
 import { FarmaciaService } from '../../services/domain/farmacia.service';
 import { MedicamentoService } from '../../services/domain/medicamento.service';
-
 
 @IonicPage()
 @Component({
@@ -13,13 +13,14 @@ import { MedicamentoService } from '../../services/domain/medicamento.service';
   templateUrl: 'farmacia-list.html',
 })
 export class FarmaciaListPage implements OnInit {
+  [x: string]: any;
   @ViewChild(Refresher) refresher: Refresher;
 
   loading: any;
   formGroup: FormGroup;
   items: FarmaciaDTO [] = [];
   medicamento: MedicamentoDTO [] = [];
-
+  
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public loadingCtl: LoadingController,
@@ -30,6 +31,7 @@ export class FarmaciaListPage implements OnInit {
   ionViewWillEnter(){
     this.list();
   }
+
 
   ngOnInit(): void {
 

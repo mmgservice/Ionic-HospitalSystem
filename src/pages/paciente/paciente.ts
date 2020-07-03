@@ -77,6 +77,7 @@ export class PacientePage implements OnInit{
       estado:[null, Validators.required],
       cidade:[null, Validators.required],
       alergia:[null, Validators.required],
+      tipoSanguineoId:[null,Validators.required],
       residenciaId:[null, Validators.required],
     });
 
@@ -107,6 +108,7 @@ export class PacientePage implements OnInit{
         estado: this.item.estado,
         cidade: this.item.cidade,
         alergia: this.item.alergia,
+        tipoSanguineoId: this.item.tipoSanguineoId,
         residenciaId: this.item.residenciaId,
 
       })

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Exames</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="saveExame()">
+        <ion-item>
+          <ion-label stacked>Data do Sistema</ion-label>
+          <ion-datetime [(ngModel)]="date" formControlName="datasistema" displayFormat="MMMM DD, YYYY"></ion-datetime>
+        </ion-item>
+
+       <ion-item>
+          <ion-label stacked>Data do Exame</ion-label>
+          <ion-datetime [(ngModel)]="date" formControlName="dataexame" displayFormat="MMMM DD, YYYY"></ion-datetime>
+       </ion-item>
+
+      <ion-item>
+        <ion-label multiple="true" stacked >Nome do Exame*</ion-label> 
+        <ion-select formControlName = "nomeexame">
+            <ion-option *ngFor="let nomedoexame of listaNomeExame " [value]="nomedoexame">{{nomedoexame.nomedoexame}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label multiple="true" stacked >Status Exame*</ion-label> 
+        <ion-select formControlName = "statusExameId">
+            <ion-option value = "1">Marcado</ion-option>
+            <ion-option value = "2">NaoMarcado</ion-option>
+        </ion-select>
+      </ion-item>
+     
+      <ion-item>
+        <ion-label stacked>Paciente*</ion-label>
+        <ion-select formControlName="paciente">
+          <ion-option *ngFor="let paciente of listaPaciente" [value]="paciente">{{paciente.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Médico*</ion-label>
+        <ion-select formControlName="medico">
+          <ion-option *ngFor="let medico of listaMedico" [value]="medico">{{medico.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-buttons margin-top>
+          <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Exame</button>
+          <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+      </ion-buttons>
+    </form>
+</ion-content>

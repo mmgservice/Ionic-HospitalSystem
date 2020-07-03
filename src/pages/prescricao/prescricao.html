@@ -1,15 +1,74 @@
-<!--
-  Generated template for the PrescricaoPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar>
-    <ion-title>prescricao</ion-title>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Prescricao</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="savePrescricao()">
+    <ion-item>
+      <ion-label stacked>Data Sistema*</ion-label>
+      <ion-input formControlName="datasistema" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Via*</ion-label>
+      <ion-input formControlName="via" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Freq*</ion-label>
+      <ion-input formControlName="freq" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Primeiro Horário*</ion-label>
+      <ion-input formControlName="horario1" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Segundo Horário*</ion-label>
+      <ion-input formControlName="horario2" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Terceiro Horário*</ion-label>
+      <ion-input formControlName="horario3" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Quarto Horário*</ion-label>
+      <ion-input formControlName="horario4" type="text"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label stacked>Quinto Horário*</ion-label>
+      <ion-input formControlName="horario5" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Sexto Horário*</ion-label>
+      <ion-input formControlName="horario6" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Medico*</ion-label>
+      <ion-select formControlName = "medico">
+        <ion-option *ngFor="let e of listaMedico" [value]="e">{{e.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Enfermagem*</ion-label>
+      <ion-select formControlName = "enfermagem">
+        <ion-option *ngFor="let e of listaEnfermagem" [value]="e">{{e.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-buttons margin-top>
+      <button ion-button block color="primary" type="submit" [disabled]="formGroup.invalid">Salvar Prescricao</button>
+      <button ion-button block color="danger" type="button" (click)="back()">Voltar</button>
+    </ion-buttons>
+  </form>
 </ion-content>

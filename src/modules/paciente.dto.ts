@@ -27,5 +27,6 @@ export interface PacienteDTO{
 	cidade: CidadeDTO,
 	estado: EstadoDTO,
 	alergia: AlergiaDTO,
+	tipoSanguineoId: string,
 	residenciaId: string,
 }

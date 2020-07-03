@@ -32,11 +32,15 @@
         <h2> {{"CEP: " + item.cep}}</h2>
         <h2> {{"Bairro: " + item.bairro}}</h2>
         <h2> {{"Estado Civil: " + item.estadocivil}}</h2>
+        <h2> {{"Telefone: " + item.telefone1}}</h2>
+        <h2> {{"Telefone: " + item.telefone2}}</h2>
+        <h2> {{"Telefone: " + item.telefone3}}</h2>
         <h2> {{"OBS: " + item.obs}}</h2>
         <h2> {{"Noma da Mãe: " + item.nomedamae}}</h2>
         <h2> {{"Nome do Pai: " + item.nomedopai}}</h2>
         <h2> {{"Cidade: " + item.cidade?.nome}}</h2>
         <h2> {{"Alergia: " + item.alergia?.nome}}</h2>
+        <h2> {{"Tipo Sanguineo: " + verificaTipoSanguineo(item.tipoSanguineoId)}}</h2>
         <h2> {{"Residência: " + verficiaResidencia(item.residenciaId)}}</h2>
       </ion-card-title>
     </ion-card-content >

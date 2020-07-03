@@ -1,5 +1,5 @@
 #sidenav1 {
-  ion-item-group[menufarmacia] {
+  ion-item-group[menuexame] {
     overflow: hidden;
     display: block;
     height: 0;
@@ -31,6 +31,21 @@
     }
   }
 }
+
+#sidenav2 {
+  ion-item-group[menuFarmacia] {
+    overflow: hidden;
+    display: block;
+    height: 0;
+    transition: height .3s linear;
+    padding-left: 20%;
+    &.menuFarmacia{
+        height: inherit;
+        // this is just sample value, calculate how much space you need for your menu items
+    }
+  }
+}
+
 #sidenav {
   ion-item-group[menu-configuracao] {
     overflow: hidden;
