@@ -76,8 +76,8 @@ export class PrescricaoListPage implements OnInit{
   }
   deletar(id){
     this.prescricaoService.deletar(id).subscribe(response =>{
-      this.navCtrl.setRoot('CidadeListPage');
+      this.navCtrl.setRoot('PrescricaoListPage');
     })
   }
-
+  
 }

@@ -76,7 +76,7 @@ export class NomeexamePage implements OnInit {
     this.closeLoading();
         let alert = this.alertControler.create({
           title: "Sucesso",
-          message: "Cadastro efetuado com sucesso!",
+          message: "Cadastro realizado com sucesso!",
           buttons: [{
             text: "OK"
           }]
@@ -113,6 +113,7 @@ export class NomeexamePage implements OnInit {
       this.navCtrl.pop();
     } else {
       this.navCtrl.popToRoot();
+      this.navCtrl.setRoot('TelaInicialPage');
     }
   }
 
@@ -127,7 +128,7 @@ export class NomeexamePage implements OnInit {
         this.closeLoading();
         let alert = this.alertControler.create({
           title: "Sucesso",
-          message: "Cadastro efetuado com sucesso!",
+          message: "Cadastro realizado com sucesso!",
           buttons: [{
             text: "OK"
           }]

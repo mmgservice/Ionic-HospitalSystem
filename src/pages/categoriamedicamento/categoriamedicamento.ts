@@ -59,7 +59,7 @@ export class CategoriamedicamentoPage implements OnInit{
         this.closeLoading();
         let alert = this.alertCtrl.create({
           title: "Sucesso",
-          message: "Cadastro efetuado com sucesso!",
+          message: "Cadastro realizado com sucesso!",
           buttons: [{
             text: "OK"
           }]
@@ -81,7 +81,7 @@ export class CategoriamedicamentoPage implements OnInit{
         this.closeLoading();
         let alert = this.alertCtrl.create({
           title: "Sucesso",
-          message: "Cadastro efetuado com sucesso!",
+          message: "Cadastro realizado com sucesso!",
           buttons: [{
             text: "OK"
           }]
@@ -122,6 +122,7 @@ export class CategoriamedicamentoPage implements OnInit{
       this.navCtrl.pop();
     } else {
       this.navCtrl.popToRoot();
+      this.navCtrl.setRoot('TelaInicialPage');
     }
   }
 

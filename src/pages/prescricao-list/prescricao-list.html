@@ -52,4 +52,9 @@
     </ion-row>
   </ion-grid>
 </ion-card>
+<ion-list *ngIf="!items.length">
+  <ion-item text-center>
+    <span>Nenhuma Prescrição Cadastrado!</span>
+  </ion-item>
+</ion-list>
 </ion-content>

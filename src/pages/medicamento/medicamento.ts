@@ -62,7 +62,7 @@ export class MedicamentoPage implements OnInit {
     this.closeLoading();
         let alert = this.alertControler.create({
           title: "Sucesso",
-          message: "Cadastro efetuado com sucesso!",
+          message: "Cadastro realizado com sucesso!",
           buttons: [{
             text: "OK"
           }]
@@ -87,7 +87,7 @@ export class MedicamentoPage implements OnInit {
         this.closeLoading();
         let alert = this.alertControler.create({
           title: "Sucesso",
-          message: "Cadastro efetuado com sucesso!",
+          message: "Cadastro realizado com sucesso!",
           buttons: [{
             text: "OK"
           }]
@@ -122,6 +122,7 @@ export class MedicamentoPage implements OnInit {
     if (this.navCtrl.canGoBack()) {
       this.navCtrl.pop();
     } else {
+      this.navCtrl.setRoot('TelaInicialPage');
       this.navCtrl.popToRoot();
     }
   }
