@@ -34,14 +34,14 @@
         <ion-label multiple="true" stacked >Status Exame*</ion-label> 
         <ion-select formControlName = "statusExameId">
             <ion-option value = "1">Marcado</ion-option>
-            <ion-option value = "2">NaoMarcado</ion-option>
+            <ion-option value = "2">Nao Marcado</ion-option>
         </ion-select>
       </ion-item>
      
       <ion-item>
         <ion-label stacked>Paciente*</ion-label>
         <ion-select formControlName="paciente">
-          <ion-option *ngFor="let paciente of listaPaciente" [value]="paciente">{{paciente.nome}}</ion-option>
+          <ion-option *ngFor="let paciente of listaPaciente" [value]="paciente">{{paciente.cpf}}</ion-option>
         </ion-select>
       </ion-item>
 

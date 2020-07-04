@@ -99,4 +99,14 @@ export class ExameListPage implements OnInit {
     }
   }
 
+  statusExame(id: number){
+    let exame = "";   
+
+    if(id == 1){
+      exame = "Marcado";
+    }else {
+      exame = "Não Marcado";
+    }      
+    return exame;
+}
 }

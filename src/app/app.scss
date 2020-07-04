@@ -1,3 +1,18 @@
+#sideHome {
+  ion-item-group[menuHome] {
+    overflow: hidden;
+    display: block;
+    height: 0;
+    transition: height .3s linear;
+    padding-left: 20%;
+    &.menu-home {
+        height: inherit;
+        // this is just sample value, calculate how much space you need for your menu items
+    }
+  }
+}
+
+
 #sidenav1 {
   ion-item-group[menuexame] {
     overflow: hidden;
@@ -58,4 +73,8 @@
         // this is just sample value, calculate how much space you need for your menu items
     }
   }
+  .body{
+    background-color: #cccccc;
+  }
+
 }

@@ -23,6 +23,7 @@ export class MyApp {
   showExpecialidadeEnf: boolean = false;
   showEnfermagem: boolean = false;
   showFarmacia: boolean = false;
+  showHome: boolean = false;
 
   
   pages: Array<{title: string, component: string}>;
@@ -70,6 +71,9 @@ export class MyApp {
   menuQuarto(): void{
       this.showQuarto = ! this.showQuarto;
   }
+  menuHome(): void{
+      this.showHome = ! this.showHome;
+  }
 
   menuLeito(): void{
       this.showLeito = ! this.showLeito;
@@ -107,6 +111,10 @@ export class MyApp {
     this.nav.setRoot("UsuarioPage");
   }
  
+  inicio(){
+    this.nav.setRoot('TelaInicialPage');
+  }
+
   medico(){
     this.nav.setRoot("MedicoPage");
   }
@@ -195,7 +203,7 @@ export class MyApp {
     this.nav.setRoot('MedicamentoListPage');
   }
   cadastroCategoriaMedicamento(){
-    this.nav.setRoot('MedicamentoListPage');
+    this.nav.setRoot('CategoriaexameListPage');
   }
   cadastroFarmacia(){
     this.nav.setRoot('FarmaciaListPage');

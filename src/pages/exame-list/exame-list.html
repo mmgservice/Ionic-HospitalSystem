@@ -17,7 +17,7 @@
   <ion-refresher (ionRefresh)="list()"></ion-refresher>
   <ion-card >
   <ion-grid *ngFor="let item of items"  >
-    <ion-row *ngIf = "item.paciente?.id == 1">
+    <ion-row *ngIf = "item.paciente?.id === item.paciente?.id">
       <ion-col style="font-weight: bolder;">Data Sistema</ion-col>
       <ion-col style="font-weight: bolder;">Data Exame</ion-col>
       <ion-col style="font-weight: bolder;">Nome do Exame</ion-col>
@@ -25,12 +25,11 @@
       <ion-col style="font-weight: bolder;">Paciente</ion-col>
       <ion-col style="font-weight: bolder;">Médico</ion-col>
     </ion-row>
-
-    <ion-row *ngIf = "item.paciente?.id === 1">
+    <ion-row *ngIf = "item.paciente?.id === item.paciente?.id">
       <ion-col>{{item.datasistema}}</ion-col>
       <ion-col>{{item.dataexame}}</ion-col>
       <ion-col>{{item.nomeexame?.nomedoexame}}</ion-col>
-      <ion-col>{{item.statusExameId}}</ion-col>
+      <ion-col>{{statusExame(item.statusExameId)}}</ion-col>
       <ion-col>{{item.paciente?.nome}}</ion-col>
       <ion-col>{{item.medico.nome}}</ion-col>
     </ion-row>
