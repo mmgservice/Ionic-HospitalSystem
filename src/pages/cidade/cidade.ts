@@ -15,7 +15,8 @@ export class CidadePage implements OnInit{
   formGroup: FormGroup;
   listaEstado: EstadoDTO[];
   loading: any;
-  item: CidadeDTO
+  item: CidadeDTO;
+  estado: EstadoDTO;
 
 
 
@@ -31,6 +32,11 @@ export class CidadePage implements OnInit{
      if(cidade && cidade.id ){
       this.item = cidade;
      }
+     const estado = this.navParams.get('estado');
+     if(estado && estado.id){
+       this.estado = estado;
+     }
+
      this.listEstado();
   }
 
@@ -46,7 +52,7 @@ export class CidadePage implements OnInit{
       this.formGroup.patchValue({
         id: this.item.id,
         nome: this.item.nome,
-        estado: this.item.estado
+        estado: this.estado
       })
     }
   }
