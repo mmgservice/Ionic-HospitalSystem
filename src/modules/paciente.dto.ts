@@ -4,10 +4,10 @@ import { CidadeDTO } from "./cidade.dto";
 
 export interface PacienteDTO{
 	id: string,
-	datasistema: Date,
+	datasistema: string,
 	nome: string,
     sobrenome: string,
-	datanascimento: Date,
+	datanascimento: string,
     idade: number,
     rg: string,
 	cpf: string,

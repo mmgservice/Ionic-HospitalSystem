@@ -18,6 +18,7 @@ export class EnfermagemPage implements OnInit{
   loading: any;
   formGroup: FormGroup;
   item: EnfermagemDTO;
+  especialidade: ExpecialidadeEnfermagemDTO;
   listaExpEnfermagem:ExpecialidadeEnfermagemDTO [] = [];
 
   constructor(
@@ -34,6 +35,12 @@ export class EnfermagemPage implements OnInit{
       if(enfermagem && enfermagem.id){
         this.item = enfermagem;
       }
+
+      const especialidade = this.navParams.get('item');
+      if(especialidade && especialidade.id){
+        this.especialidade = especialidade;
+      }
+
 
       this.listExpEnfermagem();
   }
@@ -54,7 +61,7 @@ export class EnfermagemPage implements OnInit{
       id: this.item.id,
       nome: this.item.nome,
       coren: this.item.coren,
-      expecialidade: this.item.expecialidade
+      expecialidade: this.especialidade
     })
   }
 

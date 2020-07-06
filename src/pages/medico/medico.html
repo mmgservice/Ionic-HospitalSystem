@@ -25,7 +25,7 @@
     </ion-item>
   
     <ion-item>
-      <ion-label multiple="true" >Expecialidade*</ion-label> 
+      <ion-label multiple="true" >Especialidade*</ion-label> 
       <ion-select formControlName = "expecialidade">
           <ion-option *ngFor="let expmedico of listaExpMedico; first as f" [value]="expmedico" [selected]="f">{{expmedico.expecialidade}}</ion-option>
       </ion-select>

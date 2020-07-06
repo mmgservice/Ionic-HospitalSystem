@@ -21,6 +21,9 @@ export class ExamePage implements OnInit {
  formGroup: FormGroup;
  loading: any;
  item: ExameDTO;
+ nomeExame: NomeExameDTO;
+ paciente: PacienteDTO;
+ medico: MedicoDTO;
  listaNomeExame: NomeExameDTO[]=[];
  listaPaciente: PacienteDTO[]=[];
  listaMedico: MedicoDTO[]=[];
@@ -41,9 +44,33 @@ export class ExamePage implements OnInit {
       if(exame && exame.id){
         this.item = exame;
       }
-  }
 
-  public date: string = new Date().toISOString();
+      const nomeExame = this.navParams.get('nomeExame');
+      if(nomeExame && nomeExame.id){
+        this.nomeExame = nomeExame;
+      }
+
+      const paciente = this.navParams.get('paciente');
+      if(paciente && paciente.id){
+        this.paciente = paciente;
+      }
+
+      const medico = this.navParams.get('medico');
+      if(paciente && paciente.id){
+        this.medico = medico;
+      }
+  }
+ 
+  public myDate = new Date().toISOString();
+
+  
+    public  data = new Date();
+    public dia  = this.data.getDate().toString();
+    public mes  = (this.data.getMonth()+1).toString(); //+1 pois no getMonth() Janeiro começa com zero
+    public anoF = this.data.getFullYear();
+
+    public datafinal = this.dia + "/" + this.mes + "/" + this.anoF;
+
 
   ngOnInit(): void {
     // Monta os dados necessários para o formulário
@@ -52,6 +79,7 @@ export class ExamePage implements OnInit {
       id: [null, this.item && this.item.id ? Validators.required : null],
       datasistema: [null, Validators.required],
       dataexame: [null, Validators.required],
+      horario:[null, Validators.required],
       nomeexame: [null, Validators.required],
       statusExameId: [null, Validators.required], 
       paciente:[null, Validators.required], 
@@ -65,10 +93,11 @@ export class ExamePage implements OnInit {
         id: this.item.id,
         datasistema: this.item.datasistema,
         dataexame: this.item.dataexame,
-        nomeexame: this.item.nomedoexame,
+        horario: this.item.horario,
+        nomeexame: this.nomeExame,
         statusExameId: this.item.statusExameId,
-        paciente: this.item.paciente,
-        medico: this.item.medico
+        paciente: this.paciente,
+        medico: this.medico
       })
     }
 
@@ -157,6 +186,8 @@ export class ExamePage implements OnInit {
       }
     )
   }
+
+
 
   showLoading() {
     this.loading = this.loadingCtrl.create({

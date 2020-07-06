@@ -15,10 +15,10 @@
 <ion-content padding>
   <form [formGroup]="formGroup" (ngSubmit)="savePaciente()">
 
-      <ion-item>
-        <ion-label stacked>Date</ion-label>
-        <ion-datetime [(ngModel)]="date" formControlName="datasistema" displayFormat="MMMM DD, YYYY" min="2020" max="2100"></ion-datetime>
-      </ion-item>
+    <ion-item>
+      <ion-label stacked>Data Sistema</ion-label>
+      <ion-input [(ngModel)]="datafinal" formControlName="datasistema" type="text" disabled = ""></ion-input>
+    </ion-item>
 
      <ion-item>
       <ion-label stacked>Nome*</ion-label>
@@ -32,13 +32,21 @@
 
     <ion-item>
       <ion-label stacked>Data Nascimento*</ion-label>
-      <ion-input formControlName="datanascimento" type="date"></ion-input>
-    </ion-item>
+        <ion-input formControlName="datanascimento" type="text" [brmasker]="{mask:'00/00/0000', len:10}"></ion-input>
+     </ion-item>
 
     <ion-item>
       <ion-label stacked>Idade*</ion-label>
       <ion-input formControlName="idade" type="number"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label multiple="true" stacked>Estado Civil*</ion-label> 
+      <ion-select formControlName = "estadocivil">
+          <ion-option value = "Solteiro">Solteiro</ion-option>
+          <ion-option value = "Casado">Casado</ion-option>
+      </ion-select>
+     </ion-item>
 
     <ion-item>
       <ion-label stacked>RG*</ion-label>
@@ -70,6 +78,20 @@
      </ion-item>
 
      <ion-item>
+      <ion-label multiple="true" stacked >Estado*</ion-label> 
+      <ion-select formControlName = "estado" (ionChange)="updateCidades()">
+          <ion-option *ngFor="let estados of listaEstado " [value]="estados.id">{{estados.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cidade*</ion-label>
+      <ion-select formControlName="cidade">
+        <ion-option *ngFor="let cidade of listaCidade" [value]="cidade">{{cidade.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+     <ion-item>
       <ion-label stacked>Endereço*</ion-label>
       <ion-input formControlName="endereco" type="text"></ion-input>
     </ion-item>
@@ -88,14 +110,6 @@
       <ion-label stacked>Bairro*</ion-label>
       <ion-input type="text" formControlName="bairro"></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label multiple="true" stacked>Estado Civil*</ion-label> 
-      <ion-select formControlName = "estadocivil">
-          <ion-option value = "Solteiro">Solteiro</ion-option>
-          <ion-option value = "Casado">Casado</ion-option>
-      </ion-select>
-     </ion-item>
 
      <ion-item>
       <ion-label stacked>Telefone*</ion-label>
@@ -117,20 +131,6 @@
     <ion-item>
       <ion-label stacked>Nome do Pai*</ion-label>
       <ion-input type="text" formControlName="nomedopai"></ion-input>
-    </ion-item>
-   
-    <ion-item>
-      <ion-label multiple="true" stacked >Estado*</ion-label> 
-      <ion-select formControlName = "estado" (ionChange)="updateCidades()">
-          <ion-option *ngFor="let estados of listaEstado " [value]="estados.id">{{estados.nome}}</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Cidade*</ion-label>
-      <ion-select formControlName="cidade">
-        <ion-option *ngFor="let cidade of listaCidade" [value]="cidade">{{cidade.nome}}</ion-option>
-      </ion-select>
     </ion-item>
 
     <ion-item>

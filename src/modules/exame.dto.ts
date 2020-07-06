@@ -4,8 +4,9 @@ import { NomeExameDTO } from "./nomeexame.dto";
 
 export interface ExameDTO{
   id: string,
-  datasistema: Date,
-  dataexame: Date,
+  datasistema: string,
+  dataexame: string,
+  horario: string,
   nomedoexame: NomeExameDTO,
   statusExameId: string,
   paciente: PacienteDTO,

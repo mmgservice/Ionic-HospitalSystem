@@ -21,6 +21,9 @@ export class PacientePage implements OnInit{
   formGroup: FormGroup;
   loading: any;
   item: PacienteDTO;
+  estado: EstadoDTO;
+  cidade: CidadeDTO;
+  alergia: AlergiaDTO;
   listaEstado: EstadoDTO[];
   listaCidade: CidadeDTO[];
   listaAlergia: AlergiaDTO[] = [];
@@ -40,7 +43,22 @@ export class PacientePage implements OnInit{
       if(paciente && paciente.id){
           this.item = paciente;
       } 
-      
+
+      const estado = this.navParams.get('estado');
+      if(estado && estado.id){
+        this.estado = estado;
+      }
+
+      const cidade = this.navParams.get('cidade');
+      if(cidade && cidade.id){
+        this.cidade = cidade;
+      }
+
+      const alergia = this.navParams.get('alergia');
+      if(alergia && alergia.id){
+        this.alergia = alergia;
+      }
+     
       this.listAlergia();
       this.listEstado();
       this.listCidade();
@@ -48,6 +66,14 @@ export class PacientePage implements OnInit{
     }
   
     public date: string = new Date().toISOString();
+
+    public  data = new Date();
+    public dia  = this.data.getDate().toString();
+    public mes  = (this.data.getMonth()+1).toString(); //+1 pois no getMonth() Janeiro começa com zero
+    public anoF = this.data.getFullYear();
+
+    public datafinal = this.dia + "/" + this.mes + "/" + this.anoF;
+
 
   ngOnInit(): void {
      // Monta os dados necessários para o formulário
@@ -105,9 +131,9 @@ export class PacientePage implements OnInit{
         telefone3: this.item.telefone3,
         nomedamae: this.item.nomedamae,
         nomedopai: this.item.nomedopai,
-        estado: this.item.estado,
-        cidade: this.item.cidade,
-        alergia: this.item.alergia,
+        estado: this.estado,
+        cidade: this.cidade,
+        alergia: this.alergia,
         tipoSanguineoId: this.item.tipoSanguineoId,
         residenciaId: this.item.residenciaId,
 

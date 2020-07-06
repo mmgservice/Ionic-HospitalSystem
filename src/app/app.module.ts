@@ -31,7 +31,7 @@ import { PrescricaoService } from '../services/domain/prescricao.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpClientModule, 
     BrMaskerModule,
     IonicModule.forRoot(MyApp),
   ],

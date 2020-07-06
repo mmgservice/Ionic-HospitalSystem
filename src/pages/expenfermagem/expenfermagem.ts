@@ -1,4 +1,4 @@
-import { ExpecialidadeEnfermagemDTO } from './../../modules/expenfermagem.dto';
+import { ExpecialidadeEnfermagemDTO } from '../../modules/expenfermagem.dto';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

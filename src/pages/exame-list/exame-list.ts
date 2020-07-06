@@ -5,6 +5,8 @@ import { ExameDTO } from '../../modules/exame.dto';
 import { ExameService } from '../../services/domain/exame.service';
 import { PacienteService } from '../../services/domain/paciente.service';
 import { PacienteDTO } from '../../modules/paciente.dto';
+import { NomeExameDTO } from '../../modules/nomeexame.dto';
+import { MedicoDTO } from '../../modules/medico.dto';
 
 /**
  * Generated class for the ExameListPage page.
@@ -43,8 +45,9 @@ export class ExameListPage implements OnInit {
    
   }
 
-  itemSelected(item: ExameDTO) {
-    this.navCtrl.push('ExamePage', {item: item});
+  itemSelected(item: ExameDTO, nomeExame: NomeExameDTO, paciente: PacienteDTO, medico: MedicoDTO) {
+    this.navCtrl.push('ExamePage', {item: item, nomeExame: nomeExame, paciente: paciente, medico: medico});
+
   }
 
    /**
@@ -64,6 +67,7 @@ export class ExameListPage implements OnInit {
      })
   }
 
+ 
   list() {
     this.items = [];
     this.showLoading();
@@ -76,6 +80,23 @@ export class ExameListPage implements OnInit {
         // TODO - verificar erro e exibir msg de erro
       })
   }
+
+  deletar(id){
+    this.exameService.deletar(id).subscribe(response => {
+      this.items = response;
+      this.list();
+      let alert = this.alertControl.create({
+        title: "Sucesso",
+        message: "Exame removido com sucesso!",
+        buttons: [{
+          text: "OK"
+        }]
+      });
+      alert.present();
+    })
+  }
+
+  
 
    /**
    * Abre o loading

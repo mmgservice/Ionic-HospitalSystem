@@ -13,19 +13,25 @@
 
 <ion-content padding>
   <form [formGroup]="formGroup" (ngSubmit)="saveExame()">
-        <ion-item>
-          <ion-label stacked>Data do Sistema</ion-label>
-          <ion-datetime [(ngModel)]="date" formControlName="datasistema" displayFormat="MMMM DD, YYYY"></ion-datetime>
-        </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Data Sistema</ion-label>
+      <ion-input [(ngModel)]="datafinal" formControlName="datasistema" type="text" disabled = ""></ion-input>
+    </ion-item>
 
-       <ion-item>
-          <ion-label stacked>Data do Exame</ion-label>
-          <ion-datetime [(ngModel)]="date" formControlName="dataexame" displayFormat="MMMM DD, YYYY"></ion-datetime>
-       </ion-item>
+    <ion-item>
+      <ion-label stacked>Data Exame*</ion-label>
+        <ion-input formControlName="dataexame" type="text" [brmasker]="{mask:'00/00/0000', len:10}"></ion-input>
+     </ion-item>
+
+     <ion-item>
+      <ion-label stacked>Horário*</ion-label>
+        <ion-input formControlName="horario" type="text" [brmasker]="{mask:'00:00', len:5}"></ion-input>
+     </ion-item>
 
       <ion-item>
         <ion-label multiple="true" stacked >Nome do Exame*</ion-label> 
-        <ion-select formControlName = "nomeexame">
+        <ion-select formControlName = "nomeexame"  [(ngModel)]="gender">
             <ion-option *ngFor="let nomedoexame of listaNomeExame " [value]="nomedoexame">{{nomedoexame.nomedoexame}}</ion-option>
         </ion-select>
       </ion-item>
