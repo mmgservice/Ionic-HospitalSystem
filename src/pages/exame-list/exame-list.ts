@@ -7,6 +7,7 @@ import { PacienteService } from '../../services/domain/paciente.service';
 import { PacienteDTO } from '../../modules/paciente.dto';
 import { NomeExameDTO } from '../../modules/nomeexame.dto';
 import { MedicoDTO } from '../../modules/medico.dto';
+import { DataService } from '../../services/data.service';
 
 /**
  * Generated class for the ExameListPage page.
@@ -47,7 +48,6 @@ export class ExameListPage implements OnInit {
 
   itemSelected(item: ExameDTO, nomeExame: NomeExameDTO, paciente: PacienteDTO, medico: MedicoDTO) {
     this.navCtrl.push('ExamePage', {item: item, nomeExame: nomeExame, paciente: paciente, medico: medico});
-
   }
 
    /**

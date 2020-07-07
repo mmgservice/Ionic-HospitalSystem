@@ -9,6 +9,8 @@ import { PacienteService } from '../../services/domain/paciente.service';
 import { MedicoService } from '../../services/domain/medico.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExameService } from '../../services/domain/exame.service';
+import { DataService } from '../../services/data.service';
+import { CategoriaExameDTO } from '../../modules/categoriaexame.dto';
 
 
 @IonicPage()
@@ -27,7 +29,9 @@ export class ExamePage implements OnInit {
  listaNomeExame: NomeExameDTO[]=[];
  listaPaciente: PacienteDTO[]=[];
  listaMedico: MedicoDTO[]=[];
-
+ selectedNomeExame: any;
+ selectedPaciente: any;
+ selectedMedico: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -38,7 +42,8 @@ export class ExamePage implements OnInit {
     public exameService: ExameService,
     public nomeExameService: NomeExameService,
     public pacienteService: PacienteService,
-    public medicoService: MedicoService) {
+    public medicoService: MedicoService,
+    public dataService: DataService) {
       
       const exame = this.navParams.get('item');
       if(exame && exame.id){
@@ -79,7 +84,6 @@ export class ExamePage implements OnInit {
       id: [null, this.item && this.item.id ? Validators.required : null],
       datasistema: [null, Validators.required],
       dataexame: [null, Validators.required],
-      horario:[null, Validators.required],
       nomeexame: [null, Validators.required],
       statusExameId: [null, Validators.required], 
       paciente:[null, Validators.required], 
@@ -93,7 +97,6 @@ export class ExamePage implements OnInit {
         id: this.item.id,
         datasistema: this.item.datasistema,
         dataexame: this.item.dataexame,
-        horario: this.item.horario,
         nomeexame: this.nomeExame,
         statusExameId: this.item.statusExameId,
         paciente: this.paciente,
@@ -104,7 +107,6 @@ export class ExamePage implements OnInit {
     this.listNomeExame();
     this.listPaciente();
     this.listMedico();
-  
   }
 
   listNomeExame(){
@@ -187,7 +189,9 @@ export class ExamePage implements OnInit {
     )
   }
 
-
+  compareFun(nome1: NomeExameDTO, nome2: NomeExameDTO): boolean{
+    return nome1 && nome2 ? nome1.id === nome2.id : nome1 == nome2; 
+  }
 
   showLoading() {
     this.loading = this.loadingCtrl.create({

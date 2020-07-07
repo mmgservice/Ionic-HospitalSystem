@@ -23,16 +23,11 @@
       <ion-label stacked>Data Exame*</ion-label>
         <ion-input formControlName="dataexame" type="text" [brmasker]="{mask:'00/00/0000', len:10}"></ion-input>
      </ion-item>
-
-     <ion-item>
-      <ion-label stacked>Horário*</ion-label>
-        <ion-input formControlName="horario" type="text" [brmasker]="{mask:'00:00', len:5}"></ion-input>
-     </ion-item>
-
+     
       <ion-item>
         <ion-label multiple="true" stacked >Nome do Exame*</ion-label> 
-        <ion-select formControlName = "nomeexame"  [(ngModel)]="gender">
-            <ion-option *ngFor="let nomedoexame of listaNomeExame " [value]="nomedoexame">{{nomedoexame.nomedoexame}}</ion-option>
+        <ion-select selected = "selectedNomeExame" formControlName = "nomeexame" [(ngModel)]="nomeexame">
+          <ion-option *ngFor="let nomedoexame of listaNomeExame " [value]="nomedoexame">{{nomedoexame.nomedoexame}}</ion-option>
         </ion-select>
       </ion-item>
 
@@ -46,14 +41,14 @@
      
       <ion-item>
         <ion-label stacked>Paciente*</ion-label>
-        <ion-select formControlName="paciente">
-          <ion-option *ngFor="let paciente of listaPaciente" [value]="paciente">{{paciente.cpf}}</ion-option>
+        <ion-select formControlName="paciente" selected = "selectedPaciente" [(ngModel)]="paciente">
+          <ion-option *ngFor="let paciente of listaPaciente" [value]="paciente">{{paciente.cpf}}</ion-option>    
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Médico*</ion-label>
-        <ion-select formControlName="medico">
+        <ion-select formControlName="medico" selected = "selectedMedico" [(ngModel)]="medico">
           <ion-option *ngFor="let medico of listaMedico" [value]="medico">{{medico.nome}}</ion-option>
         </ion-select>
       </ion-item>

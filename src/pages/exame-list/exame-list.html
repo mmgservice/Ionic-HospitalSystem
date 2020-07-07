@@ -6,7 +6,6 @@
       </button>
     <ion-title text-center>Exames</ion-title>
     <ion-buttons end>
-      <ion-icon name="download">Download PDF</ion-icon>
       <button ion-button icon-only (click)="newItem()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -28,14 +27,12 @@
       <ion-row>
         <ion-col style="font-weight: bolder;">Data Sistema</ion-col>
         <ion-col style="font-weight: bolder;">Data Exame</ion-col>
-        <ion-col style="font-weight: bolder;">Horário</ion-col>
         <ion-col style="font-weight: bolder;">Nome do Exame</ion-col>
         <ion-col style="font-weight: bolder;">Status Exame</ion-col>
       </ion-row>
       <ion-row>
         <ion-col>{{item.datasistema}}</ion-col>
         <ion-col>{{item.dataexame}}</ion-col>
-        <ion-col>{{item.horario}}</ion-col>
         <ion-col>{{item.nomeexame?.nomedoexame}}</ion-col>
         <ion-col>{{statusExame(item.statusExameId)}}</ion-col>
       </ion-row>

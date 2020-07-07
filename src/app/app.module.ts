@@ -24,6 +24,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
 import { CategoriaMedicamentoService } from '../services/categoriamedicamento.service';
 import { ExameService } from '../services/domain/exame.service';
 import { PrescricaoService } from '../services/domain/prescricao.service';
+import { DataService } from '../services/data.service';
 
 @NgModule({
   declarations: [
@@ -61,8 +62,8 @@ import { PrescricaoService } from '../services/domain/prescricao.service';
     FarmaciaService,
     CategoriaExameService,
     ExameService,
-    PrescricaoService
-    
+    PrescricaoService,
+    DataService
   ]
 })
 export class AppModule {}
